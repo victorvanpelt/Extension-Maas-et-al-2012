@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    How to split the bonus pool?
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-body bg-light instructions">
+        <ul>
+            <li>Blabla ik ben Victor Maas en ik schrijf te veel tekst, maar ik wil echt participanten niet beinvloeden. Ik zweer het.</li>
+            <li>the pool is <span id="pool_nummer">{{ group.pool }}</span> MONEYS.</li>
+        </ul>
+    </div>
+    <br>
+    <input type="hidden" name="check_allocation" value="" id="check_allocation"/>
+
+    <p align="center">Please choose how to allocate the bonus pool in percentages):</p>
+    <b><p id="demo1" align="center"><br></p></b>
+    <div align="center">
+    {% formfield group.allocation_a label=None %}
+    </div>
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('input[name=allocation_a]').on('input', function() {
+            var emp_one_perc = $(this).val();
+            var emp_two_perc = 100 - emp_one_perc;
+            var emp_one = {{ group.pool }} * emp_one_perc/100;
+            var emp_two = {{ group.pool }} * emp_two_perc/100;
+            document.getElementById("demo1").innerHTML = emp_one + ' Lira ('+ emp_one_perc +' %) for A and ' + emp_two + ' Lira ('+emp_two_perc+' %) for B.';
+            $('#check_allocation').val(1);
+        });
+    </script>
+{% endblock %}

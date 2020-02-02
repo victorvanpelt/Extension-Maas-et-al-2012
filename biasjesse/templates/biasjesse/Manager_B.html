@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Your Decision
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-body bg-light instructions">
+        <ul>
+            <li>The computer has now formed groups</li>
+            <li>The maximum you can invest in the collaborative project is the base amount that has been allocated to you, which is: 10 Lira</li>
+            <li>Your reward will be your remaining (uninvested) amount plus the share of the resulting bonus pool allocated to you by your supervisor (see formula below).</li>
+            <li>Your reward = base amount (10 Lira) - invested amount + allocated bonus from bonus pool</li>
+        </ul>
+    </div>
+    <br>
+    <input type="hidden" name="check_effort" value="" id="check_effort"/>
+
+    {% if player.player_role == 1 %}
+    <p align="center">Please choose the amount you want to invest, whole numbers only):</p>
+    <b><p id="demo1" align="center"><br></p></b>
+    <div align="center">
+        {% formfield group.effort_a label=None %}
+    </div>
+
+    {% else %}
+    <p align="center">Please choose the amount you want to invest, whole numbers only):</p>
+    <b><p id="demo2" align="center"><br></p></b>
+    <div align="center">
+        {% formfield group.effort_b label=None %}
+    </div>
+    {% endif %}
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('input[name=effort_a]').on('input', function() {
+            document.getElementById("demo1").innerHTML = $(this).val()+' Lira';
+            $('#check_effort').val(1);
+        });
+    </script>
+    <script>
+        $('input[name=effort_b]').on('input', function() {
+            document.getElementById("demo2").innerHTML = $(this).val()+' Lira';
+            $('#check_effort').val(1);
+        });
+    </script>
+{% endblock %}
