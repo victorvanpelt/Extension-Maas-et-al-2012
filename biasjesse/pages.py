@@ -61,4 +61,10 @@ class AllWait(WaitPage):
 class Results(Page):
     pass
 
-page_sequence = [Manager_A, Manager_B, ManagerWait, Supervisor_1, Supervisor_2, AllWait, Results]
+class ShuffleWaitPage(WaitPage):
+    wait_for_all_groups = True
+
+    def is_displayed(self):
+        return self.subsession.round_number != Constants.num_rounds
+
+page_sequence = [Manager_A, Manager_B, ManagerWait, Supervisor_1, Supervisor_2, AllWait, Results, ShuffleWaitPage]

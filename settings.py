@@ -52,7 +52,7 @@ SESSION_CONFIGS = [
     {
         'name': 'biasjesse',
         'display_name': "Jesse Bias Experiment",
-        'num_demo_participants': 12,
+        'num_demo_participants': 6,
         'app_sequence': ['biasjesse'],
         'role': 1
     },
@@ -75,7 +75,21 @@ ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """ whatever """
+DEMO_PAGE_INTRO_HTML = """
+<p>
+    This is the jesse bias app created by Victor and Jesse.
+</p>
+<p>
+    <a href="https://www.victorvanpelt.com" target="_blank">
+        Personal Website
+    </a>
+<p>    
+<p>
+    <a href="https://github.com/victorvanpelt/" target="_blank">
+        GitHub Profile
+    </a>
+</p>
+"""
 
 SECRET_KEY = '+dge8h-hu^x9wqh5=bfifw80t9#ri3+83u!vn!cunkej93dsxz'
 
