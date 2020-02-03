@@ -29,7 +29,6 @@ class Constants(BaseConstants):
 
 class Subsession(BaseSubsession):
     def creating_session(self):
-
         # Random matching but fixed id in groups
         self.group_randomly(fixed_id_in_group=True)
 
@@ -44,7 +43,7 @@ class Subsession(BaseSubsession):
                 p3.participant.vars['role'] = 3
 
         # in round 5, roles are randomly switched
-        if self.round_number == 5:
+        elif self.round_number == 5:
             role_random = random.randint(1, 2)
             for g in self.get_groups():
                 if role_random == 1:
@@ -86,53 +85,66 @@ class Group(BaseGroup):
     check_effort = models.FloatField(blank=True, initial=None)
     total_effort = models.FloatField(blank=True, initial=None)
 
-    price_a = models.CurrencyField()
-    price_b = models.CurrencyField()
-
-    allocation_a = models.FloatField(
+    allocation_b = models.FloatField(
         widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
         min=0,
         initial=None,
         max=100,
         )
     check_allocation = models.FloatField(blank=True, initial=None)
+    allocation_a = models.FloatField(blank=False, initial=None, min=0, max=100)
 
     pool = models.FloatField(blank=False, initial=None)
     pricepay = models.FloatField(
-        widget=widgets.SliderInput(attrs={'step': '0.25', 'style': 'width:500px'}, show_value=False),
+        widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
         min=0,
         initial=None,
         max=5,
         )
     check_pricepay = models.FloatField(blank=True, initial=None)
-    actualpricepay = models.CurrencyField(initial=0)
+    price_random = models.FloatField(blank=True, initial=None)
+    actualpricepay = models.FloatField(initial=0)
     info = models.IntegerField()
 
+    bonus_a = models.FloatField(blank=True, initial=None)
+    bonus_b = models.FloatField(blank=True, initial=None)
+
+    payoff_a = models.CurrencyField(blank=True, initial=None)
+    payoff_b = models.CurrencyField(blank=True, initial=None)
+    payoff_s = models.CurrencyField(blank=True, initial=None)
+
     def define_pool(self):
-        self.price_a = c(self.effort_a)
-        self.price_b = c(self.effort_b)
         self.total_effort = self.effort_a + self.effort_b
-        self.pool = round(self.total_effort * float(Constants.return_on_effort),1)
+        self.pool = round(self.total_effort * float(Constants.return_on_effort),2)
 
     def define_info(self):
-        price_random = random.uniform(0, 5)
-        if self.pricepay >= price_random:
+        random_p = random.uniform(0, 5)
+        self.price_random = round(random_p,2)
+        if self.pricepay >= self.price_random:
             self.info = 1
-            self.actualpricepay = c(self.pricepay)
+            self.actualpricepay = round(self.pricepay, 2)
         else:
             self.info = 0
-            self.actualpricepay = c(0)
+            self.actualpricepay = 0
 
     def set_payoffs(self):
         p1 = self.get_player_by_id(1)
         p2 = self.get_player_by_id(2)
         p3 = self.get_player_by_id(3)
-        p1.payoff = Constants.e_endowment - self.price_a
-        p2.payoff = Constants.e_endowment - self.price_b
-        p3.payoff = Constants.m_endowment - self.actualpricepay
+        self.allocation_a = 100 - self.allocation_b
+        self.bonus_a = round(self.pool * (self.allocation_a / 100), 2)
+        self.bonus_b = round(self.pool * (self.allocation_b / 100), 2)
+        self.payoff_a = Constants.e_endowment - c(self.effort_a) + c(self.bonus_a)
+        self.payoff_b = Constants.e_endowment - c(self.effort_b) + c(self.bonus_b)
+        self.payoff_s = Constants.m_endowment - c(self.actualpricepay)
+        p1.payoff = self.payoff_a
+        p2.payoff = self.payoff_b
+        p3.payoff = self.payoff_s
 
 class Player(BasePlayer):
     player_role = models.IntegerField()
-
-#    def define_role(self):
-#        self.player_role = self.participant['role']
+    # check_results = models.BooleanField(
+    #     blank=False,
+    #     widget=widgets.CheckboxInput(),
+    #     initial=None
+    # )

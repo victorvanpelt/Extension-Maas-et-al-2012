@@ -2,10 +2,110 @@
 {% load otree static %}
 
 {% block title %}
-    Results for this round
+    Results for round {{ subsession.round_number }}
 {% endblock %}
 
 {% block content %}
+{% if player.player_role == 1 %}
+    <div class="card card-body bg-light instructions">
+    <b>YOU</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_a }}</li>
+    </ul>
+    <b>THE OTHER BU MANAGER</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_b }}</li>
+    </ul>
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Price offer for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Actual price of information: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Total reward: {{ group.payoff_s }}</li>
+    </ul>
+    </div>
+    <br>
+{% elif player.player_role == 2 %}
+    <div class="card card-body bg-light instructions">
+    <b>YOU</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_b }}</li>
+    </ul>
+    <b>THE OTHER BU MANAGER</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_a }}</li>
+    </ul>
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Price offer for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Actual price of information: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_s }}</li>
+    </ul>
+    </div>
+    <br>
+{% else %}
+    <div class="card card-body bg-light instructions">
+    <b>YOU</b>
+    <ul>
+        <li>Price offer for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Actual price of information: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_s }}</li>
+    </ul>
+    <b>BU MANAGER A</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_a }}</li>
+    </ul>
+    <b>BU MANAGER B</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
+        <li>Total reward: {{ group.payoff_b }}</li>
+    </ul>
+    </div>
+    <br>
+{% endif %}
 
     {% next_button %}
 {% endblock %}

@@ -45,7 +45,7 @@ class Supervisor_1(Page):
 
 class Supervisor_2(Page):
     form_model = 'group'
-    form_fields = ['allocation_a', 'check_allocation']
+    form_fields = ['allocation_b', 'check_allocation']
 
     def error_message(self, value):
         if value["check_allocation"] == None:
@@ -59,6 +59,12 @@ class AllWait(WaitPage):
         self.group.set_payoffs()
 
 class Results(Page):
+    # form_model = 'player'
+    # form_fields = 'check_results'
+    #
+    # def error_message(self, value):
+    #     if value["check_results"] == None:
+    #         return 'Please check the box to continue.'
     pass
 
 class ShuffleWaitPage(WaitPage):

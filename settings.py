@@ -68,6 +68,8 @@ LANGUAGE_CODE = 'en'
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
+real_world_currency_per_point = 0.60
+POINTS_DECIMAL_PLACES = 2
 
 ROOMS = []
 
