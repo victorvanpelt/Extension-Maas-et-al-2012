@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Important information
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            This study consists of two parts in the following order: an interactive part and non-interactive part.
+        </li>
+        <li>
+            We start with the interactive part in which you form a group of three with two other participants in this session.
+        </li>
+        <li>
+            In each group, two participants will act as a manager of one of the business unit (BU managers), and one participant will act as manager of the division (supervisor).
+        </li>
+        <li>
+            Sometimes the computer may ask you to wait. Do not worry when this happens. The reason is that the computer must sometimes wait for all participants before continuing the study.
+        </li>
+    </ul>
+</div>
+<br>
+{% formfield player.accept_interactive label="I have finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}

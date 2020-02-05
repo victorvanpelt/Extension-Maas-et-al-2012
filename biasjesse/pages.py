@@ -2,6 +2,45 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
 
+class Info_Start(Page):
+
+    form_model = 'player'
+    form_fields = ['accept_start']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Info_Interactive(Page):
+
+    form_model = 'player'
+    form_fields = ['accept_interactive']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instructions_1(Page):
+
+    form_model = 'player'
+    form_fields = ['accept_instr1']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instructions_2(Page):
+
+    form_model = 'player'
+    form_fields = ['accept_instr2']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instructions_3(Page):
+
+    form_model = 'player'
+    form_fields = ['accept_instr3']
+
+    def is_displayed(self):
+        return self.round_number == 1
 
 class Manager_A(Page):
     form_model = 'group'
@@ -73,4 +112,4 @@ class ShuffleWaitPage(WaitPage):
     def is_displayed(self):
         return self.subsession.round_number != Constants.num_rounds
 
-page_sequence = [Manager_A, Manager_B, ManagerWait, Supervisor_1, Supervisor_2, AllWait, Results, ShuffleWaitPage]
+page_sequence = [Info_Start, Info_Interactive, Instructions_1, Instructions_2, Instructions_3, Manager_A, Manager_B, ManagerWait, Supervisor_1, Supervisor_2, AllWait, Results, ShuffleWaitPage]

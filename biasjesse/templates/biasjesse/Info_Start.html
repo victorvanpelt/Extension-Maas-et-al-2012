@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Important information
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            Please read all information carefully and be aware that you cannot go back to previous screens.
+        </li>
+        <li>
+            This study is anonymous, and your data will only be used for research purposes.
+        </li>
+        <li>
+            There is no psychological discomfort, no physical discomfort, nor any deception in this study.
+        </li>
+        <li>
+            Sometimes the computer may ask you to wait. Do not worry when this happens. The reason is that the computer must sometimes wait for all participants before continuing the study.
+        </li>
+    </ul>
+</div>
+<br>
+{% formfield player.accept_start label="I have finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}

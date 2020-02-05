@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The study consists of 8 rounds, and at the start of each new round, new groups of three participants (one supervisor and two BU managers) will be formed using a random process.
+        </li>
+        <li>
+            Some, but not all, participants will change roles (from BU managers to supervisor or the other way around) after round 4.
+        </li>
+        <li>
+            The choices you make during the study do NOT affect the chance that your role will change after round 4.
+        </li>
+        <li>
+            If the supervisor gets access to the information, then (s)he can, but is not obliged to, use this information in dividing the bonus pool over the BU managers.
+        </li>
+        <li>
+            After round 8, you will be asked to fill in a short questionnaire.
+        </li>
+        <li>
+            After you filled in the questionnaire, the computer will randomly select one of the 8 rounds to determine the compensation in Euro for all participants.
+        </li>
+        <li>
+            Specifically, the total reward in a round is specified in Lira. However, after randomly selecting the total reward in a particular round, it is converted to Euro using a 1 Lira to 0.50 Euro ratio.
+        </li>
+</div>
+<br>
+{% formfield player.accept_instr3 label="I have finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}

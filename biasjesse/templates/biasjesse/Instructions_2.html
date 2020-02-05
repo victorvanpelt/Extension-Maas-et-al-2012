@@ -1,0 +1,43 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The supervisor decides how to divide the bonus pool between the two BU managers.
+        </li>
+        <li>
+            Initially, the supervisor will not be able to see how much the two BU managers have invested individually. The only thing (s)he can see is how much the two BU managers have invested <i>together</i>.
+        </li>
+        <li>
+            However, the supervisor does have the opportunity to buy information about the two separate investments.
+        </li>
+        <li>
+            If the supervisor gets access to the information, then (s)he can, but is not obliged to, use this information in dividing the bonus pool over the BU managers.
+        </li>
+        <li>
+            The amount of Lira (out of 5 Lira) the supervisor is willing to pay determines the likelihood (s)he receives the information for the chosen amount of Lira.
+        </li>
+        <li>
+            Specifically, the likelihood of receiving the information for the chosen amount of Lira increases linearly between 0 Lira (2%) to 5 Lira (100%).
+        </li>
+        <li>
+            For instance, if the supervisor is willing to pay 2.5 Lira, then the chances (s)he receives the information for 2.5 Lira is 50%.
+        </li>
+        <li>
+            The total reward of a supervisor equals 15 Lira, minus the price paid for the information.
+        </li>
+        <li>
+            Note that the supervisor's total reward does not depend on the choices made by the BU managers.
+        </li>
+</div>
+<br>
+{% formfield player.accept_instr2 label="I have finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}

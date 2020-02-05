@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The two BU managers each receive 10 Lira, which is the currency we use in this experiment.
+        </li>
+        <li>
+            The BU managers will need to decide how much of it to invest in a collaborative project with the other BU manager.
+        </li>
+        <li>
+            The amount of Lira that is not invested, the BU managers keep for themselves.
+        </li>
+        <li>
+            The invested amount is combined with the amount invested by the other BU manager, which jointly is multiplied by 1.5 to determine the joint bonus pool for the BU managers.
+        </li>
+        <li>
+            The supervisor decides how to divide the total bonus pool amongst the two BU managers.
+        </li>
+        <li>
+            The total reward of a BU manager equals the not invested amount plus the bonus allocated by the supervisor.
+        </li>
+    </ul>
+</div>
+<br>
+{% formfield player.accept_instr1 label="I have finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}

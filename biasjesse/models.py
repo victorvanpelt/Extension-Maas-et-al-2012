@@ -143,6 +143,13 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     player_role = models.IntegerField()
+
+    accept_start = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_interactive = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_instr1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_instr2 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_instr3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+
     # check_results = models.BooleanField(
     #     blank=False,
     #     widget=widgets.CheckboxInput(),
