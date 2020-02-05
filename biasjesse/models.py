@@ -31,6 +31,9 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         # Random matching but fixed id in groups
         self.group_randomly(fixed_id_in_group=True)
+        for g in self.get_groups():
+            p = g.get_player_by_id()
+            p.participant.vars['extension'] = self.session.config['extension']
 
         # in round one, they get a role 1 or 2
         if self.round_number == 1:
@@ -66,6 +69,8 @@ class Subsession(BaseSubsession):
         # Give people their roles
         for p in self.get_players():
             p.player_role = p.participant.vars['role']
+            p.define_condition_player()
+
 
 class Group(BaseGroup):
     effort_a = models.FloatField(
@@ -118,8 +123,8 @@ class Group(BaseGroup):
         self.pool = round(self.total_effort * float(Constants.return_on_effort),2)
 
     def define_info(self):
-        random_p = random.uniform(0, 5)
-        self.price_random = round(random_p,2)
+        self.price_random = random.uniform(0.1, 5.0)
+        #self.price_random = round(random_p,2)
         if self.pricepay >= self.price_random:
             self.info = 1
             self.actualpricepay = round(self.pricepay, 2)
@@ -150,8 +155,6 @@ class Player(BasePlayer):
     accept_instr2 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     accept_instr3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
-    # check_results = models.BooleanField(
-    #     blank=False,
-    #     widget=widgets.CheckboxInput(),
-    #     initial=None
-    # )
+    def define_condition_player(self):
+        p = self.get_player_by_id()
+        self.extension = p.participant.vars.get('extension')

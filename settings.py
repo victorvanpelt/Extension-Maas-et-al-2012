@@ -53,8 +53,34 @@ SESSION_CONFIGS = [
         'name': 'biasjesse',
         'display_name': "Jesse Bias Experiment",
         'num_demo_participants': 6,
-        'app_sequence': ['biasjesse'],
+        'app_sequence': ['biasjesse', 'payment_info'],
         'role': 1
+    },
+    {
+        'name': 'epq',
+        'display_name': "Ex-post Questionnaire",
+        'num_demo_participants': 1,
+        'app_sequence': ['epq'],
+    },
+    {
+        'name': 'bret',
+        'display_name': "Bomb Risk Elicitation Task",
+        'num_demo_participants': 1,
+        'app_sequence': ['bret', 'payment_info'],
+    },
+    {
+        'name': 'maas_replication',
+        'display_name': "Replication of Maas et al. 2020",
+        'num_demo_participants': 6,
+        'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
+        'extension': 1,
+    },
+    {
+        'name': 'maas_extension',
+        'display_name': "Extension of Maas et al. 2012",
+        'num_demo_participants': 6,
+        'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
+        'extension': 0,
     },
 ]
 
