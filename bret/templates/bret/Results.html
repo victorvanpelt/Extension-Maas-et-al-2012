@@ -22,25 +22,25 @@
     {% if Constants.num_rounds == 1 %}
         <div class="card card-body bg-light instructions">
             {% blocktrans trimmed %}
-            You chose to collect <b>{{ boxes_collected }}</b> out of <b>{{ boxes_total }}</b> boxes.
+            You chose to collect {{ boxes_collected }} out of {{ boxes_total }} boxes.
             {% endblocktrans %}
 
             <br/>
             {% blocktrans trimmed %}
-            The bomb was hidden behind the box in row <b>{{ bomb_row }}</b>, column <b>{{ bomb_col }}</b>.
+            The bomb was hidden behind the box in row {{ bomb_row }}, column {{ bomb_col }}.
             {% endblocktrans %}
 
             <br/><br/>
             {% if bomb %}
                 {% blocktrans trimmed %}
-                    The bomb was among the <b>{{ boxes_collected }}</b> boxes you collected.<br/>
-                    Accordingly, your collected boxes were destroyed and your payoff for this activity amounts to <b>{{ payoff }} Lira</b>.
+                    The bomb was among the {{ boxes_collected }} boxes you collected.<br/>
+                    Accordingly, your collected boxes were destroyed and your payoff for this activity amounts to {{ payoff }} Lira.
                 {% endblocktrans %}
             {% else %}
                 {% blocktrans trimmed %}
-                    The bomb was not among the <b>{{ boxes_collected }}</b> boxes you collected.<br/>
-                    Accordingly, you receive <b>{{ box_value }} Lira </b> for each of the <b>{{ boxes_collected }}</b> boxes you collected.<br>
-                    Your payoff from this activity amounts to <b>{{ payoff }} Lira</b>.
+                    The bomb was not among the {{ boxes_collected }} boxes you collected.<br/>
+                    Accordingly, you receive {{ box_value }} Lira for each of the {{ boxes_collected }} boxes you collected.<br>
+                    Your payoff from this activity amounts to {{ payoff }} Lira.
                 {% endblocktrans %}
             {% endif %}
         </div>

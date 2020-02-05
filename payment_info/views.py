@@ -7,11 +7,10 @@ from .models import Constants
 class PaymentInfo(Page):
 
     def vars_for_template(self):
-        participant = self.participant
         return {
-            'redemption_code': participant.label or participant.code,
-            'eur': participant.payoff * self.session.config['real_world_currency_per_point']
+            'redemption_code': self.participant.label or self.participant.code,
+            'eur': self.participant.payoff_plus_participation_fee()
+            #'eur': self.participant.payoff * self.session.config['real_world_currency_per_point']
         }
-
 
 page_sequence = [PaymentInfo]

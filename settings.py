@@ -42,8 +42,8 @@ mturk_hit_settings = {
 }
 
 SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 0.00,
-    'participation_fee': 2.00,
+    'real_world_currency_per_point': 0.50,
+    'participation_fee': 0.00,
     'doc': "",
     'mturk_hit_settings': mturk_hit_settings,
 }
@@ -70,17 +70,17 @@ SESSION_CONFIGS = [
     },
     {
         'name': 'maas_replication',
-        'display_name': "Replication of Maas et al. 2020",
+        'display_name': "Replication of Maas et al. 2012",
         'num_demo_participants': 6,
         'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
-        'extension': 1,
+        'extension': 0,
     },
     {
         'name': 'maas_extension',
         'display_name': "Extension of Maas et al. 2012",
         'num_demo_participants': 6,
         'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
-        'extension': 0,
+        'extension': 1,
     },
 ]
 
@@ -92,9 +92,9 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'EUR'
 USE_POINTS = True
-real_world_currency_per_point = 0.60
+#real_world_currency_per_point = 0.50
 POINTS_DECIMAL_PLACES = 2
 
 ROOMS = []

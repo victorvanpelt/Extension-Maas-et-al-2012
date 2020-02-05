@@ -31,8 +31,7 @@ class Subsession(BaseSubsession):
     def creating_session(self):
         # Random matching but fixed id in groups
         self.group_randomly(fixed_id_in_group=True)
-        for g in self.get_groups():
-            p = g.get_player_by_id()
+        for p in self.get_players():
             p.participant.vars['extension'] = self.session.config['extension']
 
         # in round one, they get a role 1 or 2
@@ -142,9 +141,9 @@ class Group(BaseGroup):
         self.payoff_a = Constants.e_endowment - c(self.effort_a) + c(self.bonus_a)
         self.payoff_b = Constants.e_endowment - c(self.effort_b) + c(self.bonus_b)
         self.payoff_s = Constants.m_endowment - c(self.actualpricepay)
-        p1.payoff = self.payoff_a
-        p2.payoff = self.payoff_b
-        p3.payoff = self.payoff_s
+        p1.round_result = self.payoff_a
+        p2.round_result = self.payoff_b
+        p3.round_result = self.payoff_s
 
 class Player(BasePlayer):
     player_role = models.IntegerField()
@@ -155,6 +154,22 @@ class Player(BasePlayer):
     accept_instr2 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     accept_instr3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
+    pay_this_round = models.BooleanField()
+    round_result = models.CurrencyField()
+    extension = models.IntegerField()
+
     def define_condition_player(self):
-        p = self.get_player_by_id()
-        self.extension = p.participant.vars.get('extension')
+        self.extension = self.participant.vars.get('extension')
+
+    def set_final_payoff(self):
+        # set payoffs if <random_payoff = True> to round_result of randomly chosen round
+        # randomly determine round to pay on player level
+        if self.subsession.round_number == 1:
+            self.participant.vars['round_to_pay'] = random.randint(1,Constants.num_rounds)
+
+        if self.subsession.round_number == self.participant.vars['round_to_pay']:
+            self.pay_this_round = True
+            self.payoff = self.round_result
+        else:
+            self.pay_this_round = False
+            self.payoff = c(0)

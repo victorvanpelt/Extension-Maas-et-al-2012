@@ -96,6 +96,7 @@ class Supervisor_2(Page):
 class AllWait(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
+        self.player.set_final_payoff()
 
 class Results(Page):
     # form_model = 'player'
