@@ -2,36 +2,90 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions
+    Instructions (Page 3 of 4)
 {% endblock %}
 
 {% block content %}
+{% if player.extension == 0 %}
 <div class="card card-body bg-light instructions">
     <ul>
         <li>
-            The study consists of 8 rounds, and at the start of each new round, new groups of three participants (one supervisor and two BU managers) will be formed using a random process.
+            The Supervisor decides how to divide the bonus pool between the two BU managers.
         </li>
         <li>
-            Some, but not all, participants will change roles (from BU managers to supervisor or the other way around) after round 4.
+            The Supervisor always observes the total investment and the total bonus pool.
         </li>
         <li>
-            The choices you make during the study do NOT affect the chance that your role will change after round 4.
+            After observing the total investment and the total bonus pool, the Supervisor has the opportunity to buy information about the individual investments.
         </li>
         <li>
-            If the supervisor gets access to the information, then (s)he can, but is not obliged to, use this information in dividing the bonus pool over the BU managers.
+            The price of information about the individual investments is a randomly determined number from a uniform probability distribution ranging from 0.1 Lira to 5 Lira. Every number from 0.1 Lira to 5 Lira has an equal probability to be chosen.
         </li>
         <li>
-            After round 8, you will be asked to fill in a short questionnaire.
+            To determine whether the Supervisor gets access to information about the individual investments, the Supervisor has to indicate his willingness to pay for the information. The willingness to pay can vary from 0 Lira to 5 Lira.
         </li>
         <li>
-            After you filled in the questionnaire, the computer will randomly select one of the 8 rounds to determine the compensation in Euro for all participants.
+            The willingness to pay from the Supervisor is then compared with the randomly determined number.
+        </li>
+        <ul>
+            <li>
+                If the Supervisor’s willingness to pay ≥ randomly determined number, the Supervisor receives information about the individual investments and his reward is equal to: 15 Lira – Randomly Determined Number
+            </li>
+            <li>
+                If the Supervisor’s willingness to pay < randomly determined number, the Supervisor does not receive information about the individual investments and his reward is equal to 15 Lira.
+            </li>
+        </ul>
+        <li>
+            The likelihood for the Supervisor of getting access to information about the individual investments increases linearly with the Supervisor’s willingness to pay: for a willingness to pay of 0 Lira the Supervisor is certain not to receive the information, while for an offer of 5 Lira the Supervisor is 100 percent certain to receive the information.
         </li>
         <li>
-            Specifically, the total reward in a round is specified in Lira. However, after randomly selecting the total reward in a particular round, it is converted to Euro using a 1 Lira to 0.50 Euro ratio.
+            Note that the Supervisor's total reward does not depend on the individual investments.  Also, the randomly determined number changes every period.
         </li>
+    </ul>
 </div>
+{% else %}
+    <div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The Supervisor decides how to divide the bonus pool between the two BU managers.
+        </li>
+        <li>
+            The Supervisor always observes the total investment and the total bonus pool.
+        </li>
+        <li>
+            After observing the total investment and the total bonus pool, the Supervisor has to indicate whether he/she wants to buy information about the individual investments.
+        </li>
+        <li>
+            The price of information about the individual investments is a randomly determined number from a uniform probability distribution ranging from 0.1 Lira to 5 Lira. Every number from 0.1 Lira to 5 Lira has an equal probability to be chosen.
+        </li>
+        <li>
+            If the Supervisor does not want to buy information about the individual investments, he/she immediately has to allocate the bonus pool over the two BU managers. The Supervisor’s reward is then equal to 15 Lira.
+        </li>
+        <li>
+            If the Supervisor wants to buy information about the individual investments, the Supervisor has to indicate his willingness to pay for the information. The willingness to pay can vary from 0 Lira to 5 Lira.
+        </li>
+        <li>
+            The willingness to pay from the Supervisor is then compared with the randomly determined number.
+        </li>
+            <ul>
+                <li>
+                    If the Supervisor’s willingness to pay ≥ randomly determined number, the Supervisor receives information about the individual investments and his reward is equal to: 15 Lira – Randomly Determined Number
+                </li>
+                <li>
+                    If the Supervisor’s willingness to pay < randomly determined number, the Supervisor does not receive information about the individual investments and his reward is equal to 15 Lira.
+                </li>
+            </ul>
+        <li>
+            The likelihood for the Supervisor of getting access to information about the individual investments increases linearly with the Supervisor’s willingness to pay: for a willingness to pay of 0 Lira the Supervisor is certain not to receive the information, while for an offer of 5 Lira the Supervisor is 100 percent certain to receive the information.
+        </li>
+        <li>
+            Note that the Supervisor's total reward does not depend on the individual investments.  Also, the randomly determined number changes every period.
+        </li>
+    </ul>
+</div>
+{% endif %}
 <br>
-{% formfield player.accept_instr3 label="I have finished and would like to continue." %}
+{% formfield player.accept_3 label="I have finished and would like to continue." %}
 <br>
 {% next_button %}
 {% endblock %}

@@ -1,0 +1,54 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    First four rounds
+{% endblock %}
+
+{% block content %}
+{% if player.player_role == 1 %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The computer has determined that your role in the first four rounds is the role of BU MANAGER.
+        </li>
+        <li>
+            In each round, you have to decide how much of the 10 Lira to invest in a collaborative project with the other BU manager. This is your individual investment.
+        </li>
+        <li>
+            The first four out of eight rounds will start after you click the OK button.
+        </li>
+    </ul>
+</div>
+{% elif player.player_role == 2 %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The computer has determined that your role in the first four rounds is the role of BU MANAGER.
+        </li>
+        <li>
+            In each round, you have to decide how much of the 10 Lira to invest in a collaborative project with the other BU manager. This is your individual investment.
+        </li>
+        <li>
+            The first four out of eight rounds will start after you click the OK button.
+        </li>
+    </ul>
+</div>
+{% elif player.player_role == 3 %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            The computer has determined that your role in the first four rounds is the role of SUPERVISOR.
+        </li>
+        <li>
+            In each round, You will need to decide about the allocation of the total bonus pool among the two BU managers.
+        </li>
+        <li>
+            The first four out of eight rounds will start after you click the OK button.
+        </li>
+    </ul>
+</div>
+{% endif %}
+<br>
+{% next_button %}
+{% endblock %}

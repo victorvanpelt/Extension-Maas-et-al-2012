@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Welcome and thank you for your participation!
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            This study will approximately take 45 minutes. You will be asked to make some decisions. Please read the instructions carefully and be aware that you cannot go back to previous screens.
+        </li>
+        <li>
+            During this study, you can earn an amount of ‘lira’, which is the experimental currency we use in this study. The lira that you earn is influenced by the decisions you make. The lira earned will be converted into EUR. Every lira that you earn is worth 0.50 EUR. Youwill be paid to you within 3 weeks after the experiment.
+        </li>
+        <li>
+            Sometimes the computer may ask you to wait. Do not worry when this happens. The reason is that the computer must sometimes wait for all participants before continuing the study.
+        </li>
+        <li>
+            During the study, it is important that you do not communicate with other participants or look at other participants’ screens. Please also do not check your cell phone or disturb other participants during the study.
+        </li>
+        <li>
+            This study is anonymous. The collected data will only be used for this research study and will not be shared with anyone outside of the research team.
+        </li>
+        <li>
+            Participation is completely voluntary and you are able to quit the experiment at any time. Please note that by quitting you forfeit your rights on the payment.
+        </li>
+        <li>
+            There is no psychological discomfort, no physical discomfort, nor any deception in this study.
+        </li>
+    </ul>
+</div>
+<br>
+{% formfield player.accept_info label="I understand abovementioned conditions and accept these." %}
+<br>
+{% next_button %}
+{% endblock %}

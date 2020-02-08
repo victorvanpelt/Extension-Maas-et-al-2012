@@ -19,10 +19,10 @@ class Survey1(Page):
         'fun5'
     ]
 
-    # def get_form_fields(self):
-    #     fields = self.form_fields
-    #     random.shuffle(fields)
-    #     return fields
+    def get_form_fields(self):
+        fields = self.form_fields
+        random.shuffle(fields)
+        return fields
 
 class Survey2(Page):
     form_model = 'player'
@@ -39,10 +39,10 @@ class Survey2(Page):
         'sup10'
     ]
 
-    # def get_form_fields(self):
-    #     fields = self.form_fields
-    #     random.shuffle(fields)
-    #     return fields
+    def get_form_fields(self):
+        fields = self.form_fields
+        random.shuffle(fields)
+        return fields
 
     def is_displayed(self):
         return self.participant.vars['supervisor'] == 1
@@ -60,10 +60,10 @@ class Survey3(Page):
         'sup18'
     ]
 
-    # def get_form_fields(self):
-    #     fields = self.form_fields
-    #     random.shuffle(fields)
-    #     return fields
+    def get_form_fields(self):
+        fields = self.form_fields
+        random.shuffle(fields)
+        return fields
 
     def is_displayed(self):
         return self.participant.vars['supervisor'] == 1
@@ -85,10 +85,10 @@ class Survey4(Page):
         'man12'
     ]
 
-    # def get_form_fields(self):
-    #     fields = self.form_fields
-    #     random.shuffle(fields)
-    #     return fields
+    def get_form_fields(self):
+        fields = self.form_fields
+        random.shuffle(fields)
+        return fields
 
     def is_displayed(self):
         return self.participant.vars['manager'] == 1
@@ -110,10 +110,10 @@ class Survey5(Page):
         'trust10'
     ]
 
-    # def get_form_fields(self):
-    #     fields = self.form_fields
-    #     random.shuffle(fields)
-    #     return fields
+    def get_form_fields(self):
+        fields = self.form_fields
+        random.shuffle(fields)
+        return fields
 
 page_sequence = [
     Introduction,

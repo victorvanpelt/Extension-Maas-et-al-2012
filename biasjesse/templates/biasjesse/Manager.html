@@ -2,37 +2,39 @@
 {% load otree static %}
 
 {% block title %}
-    Your Decision
+    Round {{ subsession.round_number  }} - BU Manager
 {% endblock %}
 
 {% block content %}
 
     <div class="card card-body bg-light instructions">
         <ul>
-            <li>The computer has now formed groups</li>
-            <li>The maximum you can invest in the collaborative project is the base amount that has been allocated to you, which is: 10 Lira</li>
-            <li>Your reward will be your remaining (uninvested) amount plus the share of the resulting bonus pool allocated to you by your supervisor (see formula below).</li>
-            <li>Your reward = base amount (10 Lira) - invested amount + allocated bonus from bonus pool</li>
+            <li>Your total reward is calculated as follows:<br>
+            10 – Individual Investment + amount allocated from the bonus pool
+            </li>
+            <li>As a BU Manager, you need to decide how much of the 10 Lira to invest in a collaborative project with the other BU manager.</li>
+            <li>The individual investment of both Business Unit managers are added up and is the total investment. The total investment is multiplied by 1.5. This number is the total bonus pool for the BU managers.</li>
+            <li>The Supervisor decides how to divide the total bonus pool amongst the two BU managers. The Supervisor can choose any possible division of the total bonus pool.</li>
         </ul>
     </div>
     <br>
     <input type="hidden" name="check_effort" value="" id="check_effort"/>
 
     {% if player.player_role == 1 %}
-    <p align="center">Please choose the amount you want to invest, whole numbers only):</p>
+    <p align="center">Please choose the amount you want to invest (0-10, whole numbers only):</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
         {% formfield group.effort_a label=None %}
     </div>
 
     {% else %}
-    <p align="center">Please choose the amount you want to invest, whole numbers only):</p>
+    <p align="center">Please choose the amount you want to invest (0-10, whole numbers only):</p>
     <b><p id="demo2" align="center"><br></p></b>
     <div align="center">
         {% formfield group.effort_b label=None %}
     </div>
     {% endif %}
-
+    <br>
     {% next_button %}
 
 {% endblock %}

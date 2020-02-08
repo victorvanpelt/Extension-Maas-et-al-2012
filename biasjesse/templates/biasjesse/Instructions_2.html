@@ -2,42 +2,35 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions
+    Instructions (Page 2 of 4)
 {% endblock %}
 
 {% block content %}
 <div class="card card-body bg-light instructions">
     <ul>
         <li>
-            The supervisor decides how to divide the bonus pool between the two BU managers.
+            At the start of each round, each BU manager receives 10 Lira.
         </li>
         <li>
-            Initially, the supervisor will not be able to see how much the two BU managers have invested individually. The only thing (s)he can see is how much the two BU managers have invested <i>together</i>.
+            Each BU manager decides how much of the 10 Lira to invest in a collaborative project with the other BU manager. This is the individual investment of a BU manager.
         </li>
         <li>
-            However, the supervisor does have the opportunity to buy information about the two separate investments.
+            Each BU managers keeps the amount of Lira that is not invested in the collaborative project for him/herself.
         </li>
         <li>
-            If the supervisor gets access to the information, then (s)he can, but is not obliged to, use this information in dividing the bonus pool over the BU managers.
+            The individual investments of both business unit managers are added up and is the total investment. The total investment is multiplied by 1.5. This number is the total bonus pool for the BU managers. The total bonus pool is thus based on the individual investment of each BU manager.
         </li>
         <li>
-            The amount of Lira (out of 5 Lira) the supervisor is willing to pay determines the likelihood (s)he receives the information for the chosen amount of Lira.
+            The Supervisor decides how to divide the total bonus pool amongst the two BU managers. The Supervisor can choose any possible division of the total bonus pool.
         </li>
         <li>
-            Specifically, the likelihood of receiving the information for the chosen amount of Lira increases linearly between 0 Lira (2%) to 5 Lira (100%).
+            The total reward of a BU manager equals the remaining (uninvested) amount plus the share of the total bonus pool allocated to the BU manager by the Supervisor. The the total reward of a BU manager thus looks as follows:
         </li>
-        <li>
-            For instance, if the supervisor is willing to pay 2.5 Lira, then the chances (s)he receives the information for 2.5 Lira is 50%.
-        </li>
-        <li>
-            The total reward of a supervisor equals 15 Lira, minus the price paid for the information.
-        </li>
-        <li>
-            Note that the supervisor's total reward does not depend on the choices made by the BU managers.
-        </li>
+    </ul>
+        <p align="center">10 – Individual Investment + amount allocated from total bonus pool</p>
 </div>
 <br>
-{% formfield player.accept_instr2 label="I have finished and would like to continue." %}
+{% formfield player.accept_2 label="I have finished and would like to continue." %}
 <br>
 {% next_button %}
 {% endblock %}

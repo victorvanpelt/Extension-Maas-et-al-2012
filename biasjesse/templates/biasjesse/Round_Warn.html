@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Round {{ subsession.round_number }} out of 8 is about to start
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions" align="center">
+    After you click OK, the computer will match one supervisor and two BU managers for this round.
+</div>
+<br>
+{% next_button %}
+{% endblock %}

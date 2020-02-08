@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions (Page 4 of 4)
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <li>Before continuing, we will do a final check to make sure that you have a correct understanding of the instructions.</li>
+    <li>Please indicate whether the following statements are true or false.</li>
+</div>
+<br>
+    <p>
+        The decisions of the BU managers affect the size of the bonus pool.
+        {% formfield player.Instr1 label=None %}
+    </p>
+    <p>
+        The decisions of the Supervisor affect the size of the bonus pool.
+        {% formfield player.Instr2 label=None %}
+    </p>
+    <p>
+        The decisions of the Supervisor affect the reward of the BU managers.
+        {% formfield player.Instr3 label=None %}
+    </p>
+    <p>
+        The decisions of the BU managers affect the reward of the Supervisor.
+        {% formfield player.Instr4 label=None %}
+    </p>
+<br>
+{% next_button %}
+{% endblock %}

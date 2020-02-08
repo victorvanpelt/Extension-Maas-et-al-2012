@@ -109,8 +109,10 @@ class Group(BaseGroup):
         )
     check_allocation = models.FloatField(blank=True, initial=None)
     allocation_a = models.FloatField(blank=False, initial=None, min=0, max=100)
+    confirm_allocation = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     pool = models.FloatField(blank=False, initial=None)
+    want_info = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     pricepay = models.FloatField(
         widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
         min=0,
@@ -118,6 +120,7 @@ class Group(BaseGroup):
         max=5,
         )
     check_pricepay = models.FloatField(blank=True, initial=None)
+    confirm_price= models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     price_random = models.FloatField(blank=True, initial=None)
     actualpricepay = models.FloatField(initial=0)
     info = models.IntegerField()
@@ -160,15 +163,26 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     player_role = models.IntegerField()
 
-    accept_start = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    accept_interactive = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    accept_instr1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    accept_instr2 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    accept_instr3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    tn = models.StringField(blank=False)
+    accept_info = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_2 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    accept_3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+
+    #warn_1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    warn_2a = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    warn_2b = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     pay_this_round = models.BooleanField()
     round_result = models.CurrencyField()
     extension = models.IntegerField()
+
+    Instr1 = models.IntegerField(blank=False, choices=[[1, 'True'],[2, 'False']], widget=widgets.RadioSelect)
+    Instr2 = models.IntegerField(blank=False, choices=[[1, 'True'],[2, 'False']], widget=widgets.RadioSelect)
+    Instr3 = models.IntegerField(blank=False, choices=[[1, 'True'],[2, 'False']], widget=widgets.RadioSelect)
+    Instr4 = models.IntegerField(blank=False, choices=[[1, 'True'],[2, 'False']], widget=widgets.RadioSelect)
+
+    round_start = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     def define_condition_player(self):
         self.extension = self.participant.vars.get('extension')

@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number  }} - Supervisor
+{% endblock %}
+
+{% block content %}
+{% if group.info == 1 %}
+
+    <div class="card card-body bg-light instructions">
+        <ul>
+            <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the randomly determined number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
+            <li>Since your willingness to pay is at least equal to the randomly determined number, you obtain the information.</li>
+            <li>Thus, your reward of 15 Lira is reduced with your willingness to pay of {{ group.actualpricepay | floatformat:2 }} Lira.</li>
+            <li>The total investment by the two BU managers is {{ group.total_effort | floatformat:0 }} Lira</li>
+            <li>The total available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
+            <li>The investment of BU manager A was {{ group.effort_a | floatformat:0 }} out of 10 Lira.</li>
+            <li>The investment of BU manager B was {{ group.effort_b | floatformat:0 }} out of 10 Lira.</li>
+        </ul>
+    </div>
+    <br>
+{% else %}
+    <div class="card card-body bg-light instructions">
+        <ul>
+            <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the randomly determined number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
+            <li>Since your willingness to pay is lower than the randomly determined number, you do not obtain the information.</li>
+            <li>Thus, your reward is unchanged and equal to 15 Lira.</li>
+            <li>The total investment by the two BU managers is {{ group.total_effort | floatformat:0 }} Lira</li>
+            <li>The total available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
+        </ul>
+    </div>
+    <br>
+{% endif %}
+    <input type="hidden" name="check_allocation" value="" id="check_allocation"/>
+
+    <p align="center">Please allocate a percentage of the bonus pool to each of the BU Managers.</p>
+    <b><p id="demo1" align="center"><br></p></b>
+    <div align="center">
+    {% formfield group.allocation_b label=None %}
+    </div>
+    <br>
+    {% formfield player.confirm_allocation label="I have made my decision and would like to continue." %}
+    <br>
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('input[name=allocation_b]').on('input', function() {
+            var emp_two_perc = $(this).val();
+            var emp_one_perc = 100 - emp_two_perc;
+            var emp_two = {{ group.pool }} * emp_two_perc/100;
+            var emp_one = {{ group.pool }} * emp_one_perc/100;
+            document.getElementById("demo1").innerHTML = emp_one + ' Lira ('+ emp_one_perc +' %) for A and ' + emp_two + ' Lira ('+emp_two_perc+' %) for B.';
+            $('#check_allocation').val(1);
+        });
+    </script>
+{% endblock %}

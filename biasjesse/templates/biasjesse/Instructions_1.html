@@ -2,34 +2,37 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Instructions
+    Instructions (Page 1 of 4)
 {% endblock %}
 
 {% block content %}
 <div class="card card-body bg-light instructions">
     <ul>
         <li>
-            The two BU managers each receive 10 Lira, which is the currency we use in this experiment.
+            This study consists of two parts: an interactive part and a non-interactive part.
         </li>
         <li>
-            The BU managers will need to decide how much of it to invest in a collaborative project with the other BU manager.
+            We start with the interactive part and will clearly mention when we start with the non-interactive part. The decisions you take during the interactive part do not have an influence on the non-interactive part and vice versa.
         </li>
         <li>
-            The amount of Lira that is not invested, the BU managers keep for themselves.
+            The interactive part consists of 8 rounds. Every round has the same sequence of events.
         </li>
         <li>
-            The invested amount is combined with the amount invested by the other BU manager, which jointly is multiplied by 1.5 to determine the joint bonus pool for the BU managers.
+            You will be matched with two other participants of this session. Two participants will act as ‘business unit manager’ (BU manager from here onwards). One participant will act as ‘Supervisor’. The computer randomly determines whether you will act as BU manager or Supervisor.
         </li>
         <li>
-            The supervisor decides how to divide the total bonus pool amongst the two BU managers.
+            At the start of each round, you will be rematched with two randomly chosen participants of this session.
         </li>
         <li>
-            The total reward of a BU manager equals the not invested amount plus the bonus allocated by the supervisor.
+            Some, but not all, participants will change roles (from BU manager to Supervisor or from Supervisor to BU manager) after round 4. The decisions you make during the first 4 rounds do not affect the chance that your role will change after round 4.
+        </li>
+        <li>
+            At the end of the experiment, the computer will randomly select one of the 8 rounds to determine your compensation for the interactive part.
         </li>
     </ul>
 </div>
 <br>
-{% formfield player.accept_instr1 label="I have finished and would like to continue." %}
+{% formfield player.accept_1 label="I have finished and would like to continue." %}
 <br>
 {% next_button %}
 {% endblock %}
