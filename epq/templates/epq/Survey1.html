@@ -7,9 +7,10 @@
 
 {% block content %}
 
-    <div class="instructions" style="text-align:center">
+    <div class="card card-body bg-light instructions" style="text-align:center">
     <b>
-        Please rate the following statements reflecting general feelings and experiences that may or may not apply to you.
+        First, we would like you to answer some general questions about how you felt during the study.<br>
+        Please indicate to what extent you agree with the following statements:
     </b>
     </div>
      <table class="table">
@@ -26,11 +27,5 @@
     </table>
     <hr>
     {% next_button %}
-
-    <div class="progress" style="height: 30px;">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress|json}}%; text-align:center">
-    <span style="font-size:12pt;">{{ progress|floatformat:0 }}%</span>
-    </div>
-    </div>
 
 {% endblock %}

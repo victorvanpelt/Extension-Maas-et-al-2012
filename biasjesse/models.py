@@ -39,10 +39,16 @@ class Subsession(BaseSubsession):
             for g in self.get_groups():
                 p1 = g.get_player_by_id(1)
                 p1.participant.vars['role'] = 1
+                p1.participant.vars['manager'] = 1
+                p1.participant.vars['supervisor'] = 0
                 p2 = g.get_player_by_id(2)
                 p2.participant.vars['role'] = 2
+                p2.participant.vars['manager'] = 1
+                p2.participant.vars['supervisor'] = 0
                 p3 = g.get_player_by_id(3)
                 p3.participant.vars['role'] = 3
+                p3.participant.vars['supervisor'] = 1
+                p3.participant.vars['manager'] = 0
 
         # in round 5, roles are randomly switched
         elif self.round_number == 5:
@@ -51,17 +57,23 @@ class Subsession(BaseSubsession):
                 if role_random == 1:
                     p1 = g.get_player_by_id(1)
                     p1.participant.vars['role']  = 3
+                    p1.participant.vars['supervisor'] = 1
                     p2 = g.get_player_by_id(2)
                     p2.participant.vars['role']  = 2
+                    p2.participant.vars['manager'] = 1
                     p3 = g.get_player_by_id(3)
                     p3.participant.vars['role']  = 1
+                    p3.participant.vars['manager'] = 1
                 else:
                     p1 = g.get_player_by_id(1)
                     p1.participant.vars['role'] = 1
+                    p1.participant.vars['manager'] = 1
                     p2 = g.get_player_by_id(2)
                     p2.participant.vars['role'] = 3
+                    p2.participant.vars['supervisor'] = 1
                     p3 = g.get_player_by_id(3)
                     p3.participant.vars['role'] = 2
+                    p3.participant.vars['manager'] = 1
         else:
             pass
 

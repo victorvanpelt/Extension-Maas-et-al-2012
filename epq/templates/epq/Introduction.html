@@ -7,23 +7,17 @@
 
 {% block content %}
 
-<div class="instructions" style="height: 135px;">
+<div class="card card-body bg-light instructions">
     <ul>
         <li>
-            In this last stage, you cannot earn additional points.
+            In this last stage, you cannot earn additional Lira.
         </li>
         <li>
-            Instead, we ask you to evaluate some statements and answer a few questions.
-        </li>
-        <li>
-            We ask you to respond truthfully and to the best of your ability.
-        </li>
-        <li>
-            Please do not overthink statements and questions too much, and try to respond what naturally comes to your mind.
+            Instead, we would like you to answer some general questions and evaluate a few statements.
         </li>
     </ul>
 </div>
-
+<br>
 {% formfield player.accept_info label="I have read this information and would like to continue." %}
 <br>
     {% next_button %}

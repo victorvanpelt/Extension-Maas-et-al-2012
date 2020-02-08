@@ -7,13 +7,13 @@
 
 {% block content %}
 
-    <div class="instructions" style="text-align:center">
+    <div class="card card-body bg-light instructions" style="text-align:center">
     <b>
-        Here are several personality traits that may or may not apply to you.<br>
-        Please rate the extent to which each pair of traits applies to you, even if one trait applies more strongly than the other.
+        Now we would like to know something more about how you made your decisions during the study as SUPERVISOR.<br>
+        Please indicate to what extent you agree with the following statements:
     </b>
     </div>
-    <table class="table">
+     <table class="table">
     {% for field in form %}
         <tr>
             <td>
@@ -27,11 +27,5 @@
     </table>
     <hr>
     {% next_button %}
-
-    <div class="progress" style="height: 30px;">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{progress|json}}%; text-align:center">
-    <span style="font-size:12pt;">{{ progress|floatformat:0}}%</span>
-    </div>
-    </div>
 
 {% endblock %}

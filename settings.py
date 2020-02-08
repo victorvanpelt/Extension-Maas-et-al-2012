@@ -5,6 +5,8 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 
+
+
 mturk_hit_settings = {
     'keywords': ['bonus', 'study'],
     'title': 'A Study about Corporate Taxation',
@@ -54,7 +56,8 @@ SESSION_CONFIGS = [
         'display_name': "Jesse Bias Experiment",
         'num_demo_participants': 6,
         'app_sequence': ['biasjesse', 'payment_info'],
-        'role': 1
+        'role': 1,
+        'extension': 1,
     },
     {
         'name': 'epq',
@@ -94,10 +97,15 @@ LANGUAGE_CODE = 'en'
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'EUR'
 USE_POINTS = True
-#real_world_currency_per_point = 0.50
 POINTS_DECIMAL_PLACES = 2
+REAL_WORLD_CURRENCY_DECIMAL_PLACES = 2
 
-ROOMS = []
+ROOMS = [{
+        'name': 'CenterLab',
+        'display_name': 'Room for CenterLab',
+        'participant_label_file': 'centerlablabels.txt',
+        'use_secure_urls':True,
+    },]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
@@ -105,7 +113,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
 <p>
-    This is the jesse bias app created by Victor and Jesse.
+    This is the jesse bias app created by Victor, Bart, and Jesse.
 </p>
 <p>
     <a href="https://www.victorvanpelt.com" target="_blank">
