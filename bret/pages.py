@@ -28,6 +28,7 @@ class Instructions(Page):
             'num_nobomb':           Constants.num_rows * Constants.num_cols - 1,
             'box_value':            Constants.box_value,
             'time_interval':        Constants.time_interval,
+            'box_value_eur':        Constants.box_value_eur
         }
 
 
@@ -97,10 +98,10 @@ class Results(Page):
             'bomb_col':               self.player.bomb_col,
             'round_result':           self.player.round_result,
             'round_to_pay':           self.participant.vars['round_to_pay'],
-            'payoff':                 self.player.payoff,
+            'payoff':                 self.player.payoff_for_results,
             'total_payoff':           total_payoff,
+            'payoff_eur':             self.player.payoff_for_results_eur
         }
-
 
 # ******************************************************************************************************************** #
 # *** PAGE SEQUENCE *** #

@@ -19,33 +19,17 @@
     </div>
     <br>
     <input type="hidden" name="check_effort" value="" id="check_effort"/>
-
-    {% if player.player_role == 1 %}
-    <p align="center">Please choose the amount you want to invest (0-10, whole numbers only):</p>
-    <b><p id="demo1" align="center"><br></p></b>
-    <div align="center">
-        {% formfield group.effort_a label=None %}
-    </div>
-
-    {% else %}
     <p align="center">Please choose the amount you want to invest (0-10, whole numbers only):</p>
     <b><p id="demo2" align="center"><br></p></b>
     <div align="center">
         {% formfield group.effort_b label=None %}
     </div>
-    {% endif %}
     <br>
     {% next_button %}
 
 {% endblock %}
 
 {% block scripts %}
-    <script>
-        $('input[name=effort_a]').on('input', function() {
-            document.getElementById("demo1").innerHTML = $(this).val()+' Lira';
-            $('#check_effort').val(1);
-        });
-    </script>
     <script>
         $('input[name=effort_b]').on('input', function() {
             document.getElementById("demo2").innerHTML = $(this).val()+' Lira';

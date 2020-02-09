@@ -3,7 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
-
+from django.conf import settings
 from .config import Constants
 
 author = 'Felix Holzmeister & Armin Pfurtscheller'
@@ -48,13 +48,15 @@ class Player(BasePlayer):
     # --- set round results and player's payoff
     # ------------------------------------------------------------------------------------------------------------------
     pay_this_round = models.BooleanField()
-    round_result = models.CurrencyField()
+    round_result = models.FloatField()
+    payoff_for_results = models.FloatField()
+    payoff_for_results_eur = models.FloatField()
 
     def set_payoff(self):
 
         # determine round_result as (potential) payoff per round
         if self.bomb:
-            self.round_result = c(0)
+            self.round_result = 0
         else:
             self.round_result = self.boxes_collected * Constants.box_value
 
@@ -66,11 +68,17 @@ class Player(BasePlayer):
         if Constants.random_payoff:
             if self.subsession.round_number == self.participant.vars['round_to_pay']:
                 self.pay_this_round = True
-                self.payoff = self.round_result
+                self.payoff = c(self.round_result)
+                self.payoff_for_results = round(self.round_result, 2)
+                self.payoff_for_results_eur = round(self.round_result * settings.SESSION_CONFIG_DEFAULTS['real_world_currency_per_point'], 2)
             else:
                 self.pay_this_round = False
                 self.payoff = c(0)
+                self.payoff_for_results = 0
+                self.payoff_for_results_eur = 0
 
         # set payoffs to round_result if <random_payoff = False>
         else:
-            self.payoff = self.round_result
+            self.payoff = c(self.round_result)
+            self.payoff_for_results = round(self.round_result, 2)
+            self.payoff_for_results_eur = round(self.round_result * Constants.box_value_eur, 2)

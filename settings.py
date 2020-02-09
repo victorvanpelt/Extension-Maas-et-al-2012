@@ -52,12 +52,18 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'biasjesse',
-        'display_name': "Jesse Bias Experiment",
-        'num_demo_participants': 6,
+        'name': 'maas_replication',
+        'display_name': "Maas Replication",
+        'num_demo_participants': 3,
         'app_sequence': ['biasjesse', 'payment_info'],
-        'role': 1,
-        'extension': 1,
+        'extension': 0
+    },
+    {
+        'name': 'maas_extension',
+        'display_name': "Maas Extension",
+        'num_demo_participants': 3,
+        'app_sequence': ['biasjesse', 'payment_info'],
+        'extension': 1
     },
     {
         'name': 'epq',
@@ -72,18 +78,18 @@ SESSION_CONFIGS = [
         'app_sequence': ['bret', 'payment_info'],
     },
     {
-        'name': 'maas_replication',
-        'display_name': "Replication of Maas et al. 2012",
-        'num_demo_participants': 6,
+        'name': 'maas_replication_all',
+        'display_name': "Maas Replication, Bret, EPQ",
+        'num_demo_participants': 3,
         'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
-        'extension': 0,
+        'extension': 0
     },
     {
-        'name': 'maas_extension',
-        'display_name': "Extension of Maas et al. 2012",
-        'num_demo_participants': 6,
+        'name': 'maas_extension_all',
+        'display_name': "Maas Extension, Bret, EPQ",
+        'num_demo_participants': 3,
         'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
-        'extension': 1,
+        'extension': 1
     },
 ]
 

@@ -11,7 +11,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Instructions" %}
+    {% trans "Box Activity - Instructions" %}
 {% endblock %}
 
 
@@ -20,13 +20,13 @@
 {# ****************************************************************************************************************** #}
 {% block content %}
 
-    <div class="card card-body bg-light instructions" xmlns="http://www.w3.org/1999/html" style="height: 232px;">
+    <div class="card card-body bg-light instructions" xmlns="http://www.w3.org/1999/html">
     <ul>
         <li>
-             In this next activity of the decision stage, you will see a field with {{ num_boxes }} boxes.
+             In this next activity, you will see a field with {{ num_boxes }} boxes.
         </li>
         <li>
-            Each box you collect gives you {{ box_value|floatformat:2 }} Lira.
+            Each box you collect gives you {{ box_value|floatformat }} Lira.
         </li>
         <li>
             However, behind one of the boxes hides one bomb that destroys everything that has been collected.
@@ -41,10 +41,10 @@
             After you have filled in your number, press 'Stop' and 'Solve' to finalize your decision.
         </li>
         <li>
-            If your random selection of boxes does not contain the bomb, you earn {{ box_value|floatformat:2 }} Lira for every collected box.
+            If your random selection of boxes does not contain the bomb, you earn {{ box_value|floatformat }} Lira for every collected box.
         </li>
         <li>
-            If you collect the box where the bomb is located, the bomb will explode and you will earn 0 Lira.
+            If you collect the box where the bomb is located, the bomb will explode and you will earn 0 Euro.
         </li>
     </ul>
     </div>

@@ -9,7 +9,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-
+from django.conf import settings
 
 author = 'Jesse'
 
@@ -21,7 +21,7 @@ Jesse bias
 class Constants(BaseConstants):
     name_in_url = 'biasjesse'
     players_per_group = 3
-    num_rounds = 8
+    num_rounds = 1
     e_endowment = c(10)
     m_endowment = c(15)
     Pmax = c(5.0)
@@ -112,10 +112,12 @@ class Group(BaseGroup):
     confirm_allocation = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     pool = models.FloatField(blank=False, initial=None)
-    want_info = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    want_info = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], initial=0)
+    want_info_form = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], widget=widgets.RadioSelect)
+
     pricepay = models.FloatField(
         widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
-        min=0,
+        min=0.1,
         initial=None,
         max=5,
         )
@@ -136,9 +138,11 @@ class Group(BaseGroup):
         self.total_effort = self.effort_a + self.effort_b
         self.pool = round(self.total_effort * float(Constants.return_on_effort),2)
 
+    def define_want_info(self):
+        self.want_info = self.want_info_form
+
     def define_info(self):
         self.price_random = random.uniform(0.1, 5.0)
-        #self.price_random = round(random_p,2)
         if self.pricepay >= self.price_random:
             self.info = 1
             self.actualpricepay = round(self.pricepay, 2)
@@ -184,18 +188,22 @@ class Player(BasePlayer):
 
     round_start = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
+    payoff_eur = models.CurrencyField()
+    round_to_pay = models.IntegerField()
+
     def define_condition_player(self):
         self.extension = self.participant.vars.get('extension')
 
     def set_final_payoff(self):
-        # set payoffs if <random_payoff = True> to round_result of randomly chosen round
-        # randomly determine round to pay on player level
         if self.subsession.round_number == 1:
             self.participant.vars['round_to_pay'] = random.randint(1,Constants.num_rounds)
+            self.round_to_pay = self.participant.vars['round_to_pay']
 
         if self.subsession.round_number == self.participant.vars['round_to_pay']:
             self.pay_this_round = True
             self.payoff = self.round_result
+            self.payoff_eur = self.round_result.to_real_world_currency(self.session)
         else:
             self.pay_this_round = False
             self.payoff = c(0)
+            self.payoff_eur = 0

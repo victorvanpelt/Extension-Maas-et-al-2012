@@ -5,9 +5,9 @@ import random
 import json
 
 class Introduction(Page):
-
-    form_model = 'player'
-    form_fields = ['accept_info']
+    pass
+    # form_model = 'player'
+    # form_fields = ['accept_info']
 
 class Survey1(Page):
     form_model = 'player'
@@ -16,7 +16,8 @@ class Survey1(Page):
         'fun2',
         'fun3',
         'fun4',
-        'fun5'
+        'fun5',
+        'info_diff'
     ]
 
     def get_form_fields(self):

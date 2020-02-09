@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    {% if self.player.extension == 1 %}
+    {% if player.extension == 1 %}
     <div class="card card-body bg-light instructions">
         <ul>
             <li>You have indicated that you want to pay a price for receiving information about the invidual investments of the two BU managers.</li>
@@ -18,7 +18,7 @@
             <li>By dragging the slider, you can see how expressing a higher willingness to pay affects your likelihood of getting the information.</li>
         </ul>
     </div>
-    {% elif self.player.extension == 0 %}
+    {% elif player.extension == 0 %}
     <div class="card card-body bg-light instructions">
         <ul>
             <li>As a Supervisor, you need to allocate the bonus pool over the two BU managers.</li>
@@ -34,13 +34,13 @@
     <br>
     <input type="hidden" name="check_pricepay" value="" id="check_pricepay"/>
 
-    <p align="center">Please indicate your willingness to pay for information about the individual investments of BU managers A and B (0.0-5.0, 1 decimal allowed):</p>
+    <p align="center">Please indicate your willingness to pay for information about the individual investments of BU managers A and B<br> (0.0-5.0, 1 decimal allowed):</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
     {% formfield group.pricepay label=None %}
     </div>
     <br>
-    {% formfield player.confirm_price label="I have made my decision and would like to continue." %}
+    {% formfield group.confirm_price label="I have made my decision and would like to continue." %}
     <br>
     {% next_button %}
 

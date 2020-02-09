@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Last round has finished
+{% endblock %}
+
+{% block content %}
+
+<div class="card card-body bg-light instructions">
+    <ul>
+    <li>
+        This was the last round and the end of the interactive part of this study.
+    </li>
+    <li>
+        The computer has determined that the payment round is round {{ player.round_to_pay }}.
+    </li>
+    <li>
+        Since your total reward in round {{ player.round_to_pay }} was {{ player.payoff|floatformat:2 }} Lira, this is your payment for participating in the interactive part of the study.
+    </li>
+    <li>
+        Please click OK to continue to the non-interactive part of the study.
+    </li>
+    </ul>
+</div>
+<br>
+{% next_button %}
+{% endblock %}

@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card card-body bg-light instructions" style="height: 187px;">
+    <div class="card card-body bg-light instructions">
         <ul>
         <li>
-            Your total payoff based on your decisions equals <b>{{ participant.payoff|floatformat:2 }}</b> Lira which is worth <b>{{ eur|floatformat:2 }}</b> EUR.
+            Your total payoff in both the interactive and non-interactive stages equals <b>{{ participant.payoff|floatformat:2 }}</b> Lira which is worth <b>{{ eur|floatformat:2 }}</b> EUR.
         </li>
 <!--        <li>-->
 <!--            Within three weeks of this study, you will receive a survey to fill in your personal code and bank information so we can wire you this amount via banktransfer.-->
@@ -18,10 +18,13 @@
 <!--            <b>IMPORTANT</b>: please take the form with your personal code home with you.-->
 <!--        </li>-->
         <li>
-            Also, please do not to discuss this study with other (potential) participants until Saturday 01-03-2020.
+            Please do not to discuss this study with other (potential) participants until Saturday 01-03-2020.
         </li>
         <li>
-            Please leave your cubicle, and report in the other room.
+            You may now leave your cubicle, and report in the other room.
+        </li>
+        <li>
+            <b>IMPORTANT</b>: please take the form with your personal code home with you.
         </li>
         </ul>
     </div>

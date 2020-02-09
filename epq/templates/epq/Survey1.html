@@ -2,16 +2,14 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Questionnaire
+    Questionnaire (Page 1 of 5)
 {% endblock %}
 
 {% block content %}
 
     <div class="card card-body bg-light instructions" style="text-align:center">
-    <b>
-        First, we would like you to answer some general questions about how you felt during the study.<br>
+        First, we would like to ask you some general questions about the interactive part of this study.<br>
         Please indicate to what extent you agree with the following statements:
-    </b>
     </div>
      <table class="table">
     {% for field in form %}

@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number  }} - BU Manager
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-body bg-light instructions">
+        <ul>
+            <li>Your total reward is calculated as follows:<br>
+            10 – Individual Investment + amount allocated from the bonus pool
+            </li>
+            <li>As a BU Manager, you need to decide how much of the 10 Lira to invest in a collaborative project with the other BU manager.</li>
+            <li>The individual investment of both Business Unit managers are added up and is the total investment. The total investment is multiplied by 1.5. This number is the total bonus pool for the BU managers.</li>
+            <li>The Supervisor decides how to divide the total bonus pool amongst the two BU managers. The Supervisor can choose any possible division of the total bonus pool.</li>
+        </ul>
+    </div>
+    <br>
+    <input type="hidden" name="check_effort" value="" id="check_effort"/>
+    <p align="center">Please choose the amount you want to invest (0-10, whole numbers only):</p>
+    <b><p id="demo1" align="center"><br></p></b>
+    <div align="center">
+        {% formfield group.effort_a label=None %}
+    </div>
+    <br>
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $('input[name=effort_a]').on('input', function() {
+            document.getElementById("demo1").innerHTML = $(this).val()+' Lira';
+            $('#check_effort').val(1);
+        });
+    </script>
+{% endblock %}

@@ -47,7 +47,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
 
     #Introduction
-    accept_info = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    # accept_info = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     #Survey1
     fun1 = models.IntegerField(
@@ -68,6 +68,10 @@ class Player(BasePlayer):
     )
     fun5 = models.IntegerField(
         label="I started to loose my interest as the study progressed.",
+        choices=Constants.StandardChoices
+    )
+    info_diff = models.IntegerField(
+        label="The procedure that supervisors have to go through to get access to information about the individual investments was difficult to understand.",
         choices=Constants.StandardChoices
     )
 

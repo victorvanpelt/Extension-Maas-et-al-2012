@@ -78,39 +78,47 @@ class SecondStageWarnB(Page):
 class Round_Warn(Page):
     pass
 
-class Manager(Page):
+class Manager_A(Page):
     form_model = 'group'
-    form_fields = ['effort_a', 'effort_b', 'check_effort']
+    form_fields = ['effort_a', 'check_effort']
 
     def error_message(self, value):
         if value["check_effort"] == None:
             return 'Please the slider to make a decision.'
 
     def is_displayed(self):
-        return self.player.player_role != 3
+        return self.player.player_role == 1
 
-# class Manager_B(Page):
-#     form_model = 'group'
-#     form_fields = ['effort_b', 'check_effort', 'confirm_effort']
-#
-#     def error_message(self, value):
-#         if value["check_effort"] == None:
-#             return 'Please the slider to make a decision.'
-#
-#     def is_displayed(self):
-#         return self.player.player_role == 2
+class Manager_B(Page):
+    form_model = 'group'
+    form_fields = ['effort_b', 'check_effort']
+
+    def error_message(self, value):
+        if value["check_effort"] == None:
+            return 'Please the slider to make a decision.'
+
+    def is_displayed(self):
+        return self.player.player_role == 2
 
 class ManagerWait(WaitPage):
-    wait_for_all_groups = True
     def after_all_players_arrive(self):
-        self.group.define_pool()
+         self.group.define_pool()
 
 class Supervisor_1A(Page):
     form_model = 'group'
-    form_fields = ['want_info']
+    form_fields = ['want_info_form']
 
     def is_displayed(self):
-        return self.player.player_role == 3 & self.player.extension == 1
+        if self.player.extension == 0:
+            return False
+        else:
+            if self.player.player_role <3:
+                return False
+            else:
+                return True
+
+    def before_next_page(self):
+        self.group.define_want_info()
 
 class Supervisor_1B(Page):
     form_model = 'group'
@@ -121,12 +129,11 @@ class Supervisor_1B(Page):
             return 'Please the slider to make a decision.'
 
     def is_displayed(self):
-        return self.player.extension == 0 & self.player.player_role == 3 | self.player.extension == 1 & self.group.want_info == 1 & self.player.player_role == 3
-        # if self.player.extension ==0:
-        #     return self.player.player_role ==3
-        # else:
-        #     if self.group.want_info == 1:
-        #         return self.player.player_role == 3
+        if self.player.extension ==0:
+             return self.player.player_role ==3
+        else:
+             if self.group.want_info == 1:
+                 return self.player.player_role == 3
 
     def before_next_page(self):
         self.group.define_info()
@@ -140,7 +147,19 @@ class Supervisor_2A(Page):
             return 'Please the slider to make a decision.'
 
     def is_displayed(self):
-        return self.player.extension == 0 & self.player.player_role == 3 | self.player.extension == 1 & self.group.want_info == 1 & self.player.player_role == 3
+        if self.player.extension == 0:
+            if self.player.player_role < 3:
+                return False
+            else:
+                return True
+        else:
+            if self.player.player_role < 3:
+                return False
+            else:
+                if self.group.want_info == 0:
+                    return False
+                else:
+                    return True
 
 class Supervisor_2B(Page):
     form_model = 'group'
@@ -151,20 +170,24 @@ class Supervisor_2B(Page):
             return 'Please the slider to make a decision.'
 
     def is_displayed(self):
-        return self.player.extension == 1 & self.player.player_role == 3 & self.group.want_info == 0
+        if self.player.extension ==0:
+            return False
+        else:
+            if self.player.player_role < 3:
+                return False
+            else:
+                if self.group.want_info == 1:
+                    return False
+                else:
+                    return True
 
 class AllWait(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
-        self.player.set_final_payoff()
+        for p in self.group.get_players():
+            p.set_final_payoff()
 
 class Results(Page):
-    # form_model = 'player'
-    # form_fields = 'check_results'
-    #
-    # def error_message(self, value):
-    #     if value["check_results"] == None:
-    #         return 'Please check the box to continue.'
     pass
 
 class ShuffleWaitPage(WaitPage):
@@ -172,6 +195,10 @@ class ShuffleWaitPage(WaitPage):
 
     def is_displayed(self):
         return self.subsession.round_number != Constants.num_rounds
+
+class FinishPage(Page):
+    def is_displayed(self):
+        return self.subsession.round_number == Constants.num_rounds
 
 page_sequence = [
     TicketNumber,
@@ -184,7 +211,8 @@ page_sequence = [
     SecondStageWarnA,
     SecondStageWarnB,
     Round_Warn,
-    Manager,
+    Manager_A,
+    Manager_B,
     ManagerWait,
     Supervisor_1A,
     Supervisor_1B,
@@ -192,5 +220,6 @@ page_sequence = [
     Supervisor_2B,
     AllWait,
     Results,
-    ShuffleWaitPage
+    ShuffleWaitPage,
+    FinishPage
 ]
