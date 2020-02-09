@@ -109,7 +109,6 @@ class Group(BaseGroup):
         )
     check_allocation = models.FloatField(blank=True, initial=None)
     allocation_a = models.FloatField(blank=False, initial=None, min=0, max=100)
-    confirm_allocation = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     pool = models.FloatField(blank=False, initial=None)
     want_info = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], initial=0)
@@ -122,7 +121,6 @@ class Group(BaseGroup):
         max=5,
         )
     check_pricepay = models.FloatField(blank=True, initial=None)
-    confirm_price= models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     price_random = models.FloatField(blank=True, initial=None)
     actualpricepay = models.FloatField(initial=0)
     info = models.IntegerField()
@@ -174,8 +172,8 @@ class Player(BasePlayer):
     accept_3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     #warn_1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    warn_2a = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    warn_2b = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    # warn_2a = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
+    # warn_2b = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     pay_this_round = models.BooleanField()
     round_result = models.CurrencyField()
