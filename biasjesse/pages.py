@@ -62,16 +62,10 @@ class FirstStageWarn(Page):
         return self.round_number == 1
 
 class SecondStageWarnA(Page):
-    form_model = 'player'
-    form_fields = ['warn_2a']
-
     def is_displayed(self):
         return self.round_number == 5
 
 class SecondStageWarnB(Page):
-    form_model = 'player'
-    form_fields = ['warn_2b']
-
     def is_displayed(self):
         return self.round_number == 5
 
@@ -122,7 +116,7 @@ class Supervisor_1A(Page):
 
 class Supervisor_1B(Page):
     form_model = 'group'
-    form_fields = ['pricepay', 'check_pricepay', 'confirm_price']
+    form_fields = ['pricepay', 'check_pricepay']
 
     def error_message(self, value):
         if value["check_pricepay"] == None:
@@ -140,7 +134,7 @@ class Supervisor_1B(Page):
 
 class Supervisor_2A(Page):
     form_model = 'group'
-    form_fields = ['allocation_b', 'check_allocation', 'confirm_allocation']
+    form_fields = ['allocation_b', 'check_allocation']
 
     def error_message(self, value):
         if value["check_allocation"] == None:
@@ -163,7 +157,7 @@ class Supervisor_2A(Page):
 
 class Supervisor_2B(Page):
     form_model = 'group'
-    form_fields = ['allocation_b', 'check_allocation', 'confirm_allocation']
+    form_fields = ['allocation_b', 'check_allocation']
 
     def error_message(self, value):
         if value["check_allocation"] == None:
