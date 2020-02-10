@@ -157,7 +157,11 @@ class Group(BaseGroup):
             self.pricepay = self.pricepay_r
 
     def define_info(self):
-        self.price_random = random.uniform(0, 5.0)
+        rn = 0
+        while rn==5 | rn==0:
+            rn = random.uniform(0, 5)
+        self.price_random = rn
+        # self.price_random = random.uniform(0, 5.0)
         if self.pricepay >= self.price_random:
             self.info = 1
             self.actualpricepay = round(self.price_random, 2)

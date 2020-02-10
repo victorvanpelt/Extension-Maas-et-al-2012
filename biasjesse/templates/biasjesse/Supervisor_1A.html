@@ -9,19 +9,30 @@
 
     <div class="card card-body bg-light instructions">
         <ul>
-            <li>As a Supervisor, you need to allocate the bonus pool over the two BU managers.</li>
+            <li>Your task is to allocate the bonus pool between the two BU managers.</li>
             <li>The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the total bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.</li>
-            <li>You can obtain information about individual investments at a price that is equal to a randomly determined number ranging from 0 Lira to 5 Lira. Every number from 0 Lira to 5 Lira has an equal probability to be chosen.</li>
-            <li>At the bottom of this screen, you first need to indicate whether you want to pay a price for information about the individual investments.</li>
-            <li>If you click ‘NO’, then you immediately have to allocate the bonus pool over the two BU managers. Your reward is then equal to 15 Lira.</li>
-            <li>If you click ‘YES’, then you first have to indicate your willingness to pay for the information before allocating the bonus pool over the two BU managers. Your willingness to pay can vary from 0.1 Lira to 5 Lira. The higher your willingness to pay, the higher the probability that you will receive information.</li>
-            <li>If your willingness to pay ≥ randomly determined number, you receive information about the individual investments and your reward is equal to: 15 Lira – Randomly Determined Number.</li>
-            <li>If your willingness to pay < randomly determined number, you do not receive information about the individual investments and your reward is equal to 15 Lira.</li>
+            <li>At the bottom of this screen, you will first indicate whether you want to pay for information about the individual investments of the BU Managers.</li>
+            <li>If you click ‘NO’, you immediately allocate the bonus pool between the two BU managers. Your reward is then equal to 15 Lira.</li>
+            <li>If you click ‘YES’, you first indicate your willingness to pay for the information from 0.1 to 5 Lira before allocating the bonus pool.</li>
+            <li>
+                Next, the computer compares your willingness to pay to a random number between 0 Lira and 5 Lira. Every number between 0 Lira and 5 Lira has an equal probability to be chosen.
+            </li>
+            <ul>
+                <li>
+                    If the Supervisor’s willingness to pay < the randomly determined number, he or she does not receive the information and his or her total reward is: 15 Lira.
+                </li>
+                <li>
+                    If the Supervisor’s willingness to pay ≥ the randomly determined number, he or she receives the information and his or her total reward is: 15 Lira – randomly determined number.
+                </li>
+            </ul>
+            <li>
+                When the Supervisor’s willingness to pay is 5 Lira, he or she receives the information and his or her total reward is: 15 Lira – randomly determined number.
+            </li>
         </ul>
     </div>
     <br>
 
-    <p align="center">Please indicate whether you want to pay a price for obtaining information about the individual investments of the two BU managers.</p>
+    <p align="center">Do you want to pay a price for information about the individual investments of the BU managers?</p>
     <div align="center">
     {% formfield group.want_info_form label=None %}
     </div>
