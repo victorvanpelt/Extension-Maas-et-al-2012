@@ -77,13 +77,17 @@ class Subsession(BaseSubsession):
         else:
             pass
 
-        # Give people their roles
+        # Give people their roles and the condition
         for p in self.get_players():
             p.player_role = p.participant.vars['role']
             p.define_condition_player()
 
+        # Give group condition
+        for g in self.get_groups():
+            g.extension = self.session.config['extension']
 
 class Group(BaseGroup):
+    extension = models.IntegerField()
     effort_a = models.FloatField(
         widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
         min=0,
@@ -114,12 +118,19 @@ class Group(BaseGroup):
     want_info = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], initial=0)
     want_info_form = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], widget=widgets.RadioSelect)
 
-    pricepay = models.FloatField(
+    pricepay_r = models.FloatField(
         widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
-        min=0.1,
+        min=0,
         initial=None,
         max=5,
         )
+    pricepay_e = models.FloatField(
+        widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
+        min=0,
+        initial=None,
+        max=5,
+        )
+    pricepay = models.FloatField()
     check_pricepay = models.FloatField(blank=True, initial=None)
     price_random = models.FloatField(blank=True, initial=None)
     actualpricepay = models.FloatField(initial=0)
@@ -139,11 +150,17 @@ class Group(BaseGroup):
     def define_want_info(self):
         self.want_info = self.want_info_form
 
+    def define_price(self):
+        if self.extension == 1:
+            self.pricepay = self.pricepay_e
+        elif self.extension == 0:
+            self.pricepay = self.pricepay_r
+
     def define_info(self):
-        self.price_random = random.uniform(0.1, 5.0)
+        self.price_random = random.uniform(0, 5.0)
         if self.pricepay >= self.price_random:
             self.info = 1
-            self.actualpricepay = round(self.pricepay, 2)
+            self.actualpricepay = round(self.price_random, 2)
         else:
             self.info = 0
             self.actualpricepay = 0
@@ -170,10 +187,6 @@ class Player(BasePlayer):
     accept_1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     accept_2 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
     accept_3 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-
-    #warn_1 = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    # warn_2a = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
-    # warn_2b = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
     pay_this_round = models.BooleanField()
     round_result = models.CurrencyField()

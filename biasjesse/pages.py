@@ -116,20 +116,41 @@ class Supervisor_1A(Page):
 
 class Supervisor_1B(Page):
     form_model = 'group'
-    form_fields = ['pricepay', 'check_pricepay']
+    form_fields = ['pricepay_r', 'check_pricepay']
 
     def error_message(self, value):
         if value["check_pricepay"] == None:
             return 'Please the slider to make a decision.'
 
     def is_displayed(self):
-        if self.player.extension ==0:
+        if self.player.extension == 1:
+            return False
+        if self.player.extension == 0:
              return self.player.player_role ==3
-        else:
-             if self.group.want_info == 1:
-                 return self.player.player_role == 3
 
     def before_next_page(self):
+        self.group.define_price()
+        self.group.define_info()
+
+class Supervisor_1C(Page):
+    form_model = 'group'
+    form_fields = ['pricepay_e', 'check_pricepay']
+
+    def error_message(self, value):
+        if value["check_pricepay"] == None:
+            return 'Please the slider to make a decision.'
+
+    def is_displayed(self):
+        if self.player.extension == 0:
+            return False
+        else:
+            if self.group.want_info == 0:
+                return False
+            else:
+                return self.player.player_role == 3
+
+    def before_next_page(self):
+        self.group.define_price()
         self.group.define_info()
 
 class Supervisor_2A(Page):
@@ -210,6 +231,7 @@ page_sequence = [
     ManagerWait,
     Supervisor_1A,
     Supervisor_1B,
+    Supervisor_1C,
     Supervisor_2A,
     Supervisor_2B,
     AllWait,

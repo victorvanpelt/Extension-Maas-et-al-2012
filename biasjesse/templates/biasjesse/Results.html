@@ -13,14 +13,14 @@
         <li>Base amount (+): 10 Lira</li>
         <li>Individual Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
         <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
-        <li>Total reward: {{ group.payoff_a }}</li>
+        <li>Total reward: {{ group.payoff_a | floatformat:2 }} Lira</li>
     </ul>
     <b>THE OTHER BU MANAGER</b>
     <ul>
         <li>Base amount (+): 10 Lira</li>
         <li>Individual Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
         <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
-        <li>Total reward: {{ group.payoff_b }}</li>
+        <li>Total reward: {{ group.payoff_b | floatformat:2 }} Lira</li>
     </ul>
     {% if player.extension == 0 %}
     <b>THE SUPERVISOR</b>
@@ -36,7 +36,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% elif player.extension == 1 %}
     {% if group.want_info == 0 %}
@@ -48,7 +48,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% elif group.want_info == 1 %}
     <b>THE SUPERVISOR</b>
@@ -65,7 +65,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% endif %}
     {% endif %}
@@ -78,14 +78,14 @@
         <li>Base amount (+): 10 Lira</li>
         <li>Individual Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
         <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
-        <li>Total reward: {{ group.payoff_b }}</li>
+        <li>Total reward: {{ group.payoff_b | floatformat:2 }} Lira</li>
     </ul>
     <b>THE OTHER BU MANAGER</b>
     <ul>
         <li>Base amount (+): 10 Lira</li>
         <li>Individual Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
         <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
-        <li>Total reward: {{ group.payoff_a }}</li>
+        <li>Total reward: {{ group.payoff_a | floatformat:2 }} Lira</li>
     </ul>
     {% if player.extension == 0 %}
     <b>THE SUPERVISOR</b>
@@ -101,7 +101,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% elif player.extension == 1 %}
     {% if group.want_info == 0 %}
@@ -113,7 +113,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% elif group.want_info == 1 %}
     <b>THE SUPERVISOR</b>
@@ -130,7 +130,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% endif %}
     {% endif %}
@@ -152,7 +152,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% elif player.extension == 1 %}
     {% if group.want_info == 0 %}
@@ -164,7 +164,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% elif group.want_info == 1 %}
     <b>THE SUPERVISOR</b>
@@ -181,7 +181,7 @@
     <ul>
         <li>Base amount (+): 15 Lira</li>
         <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
-        <li>Total reward: {{ group.payoff_s }}</li>
+        <li>Total reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
     </ul>
     {% endif %}
     {% endif %}
@@ -190,14 +190,14 @@
         <li>Base amount (+): 10 Lira</li>
         <li>Individual Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
         <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
-        <li>Total reward: {{ group.payoff_a }}</li>
+        <li>Total reward: {{ group.payoff_a | floatformat:2 }} Lira</li>
     </ul>
     <b>BU MANAGER B</b>
     <ul>
         <li>Base amount (+): 10 Lira</li>
         <li>Individual Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
         <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
-        <li>Total reward: {{ group.payoff_b }}</li>
+        <li>Total reward: {{ group.payoff_b | floatformat:2 }} Lira</li>
     </ul>
     </div>
     <br>
