@@ -49,13 +49,13 @@ class Instructions_4(Page):
 
     def error_message(self, values):
         if values["Instr1"] != 1:
-            return 'Your first answer is incorrect.'
+            return 'Your first answer is incorrect. The individual investments of the BU managers determine the size of the bonus pool.'
         if values["Instr2"] != 2:
-            return 'Your second answer is incorrect.'
+            return 'Your second answer is incorrect. The decisions of the Supervisor do not affect the size of the bonus pool.'
         if values["Instr3"] != 1:
-            return 'Your third answer is incorrect.'
+            return 'Your third answer is incorrect. The decisions of the Supervisor affect how the bonus pool is divided between the two BU managers.'
         if values["Instr4"] != 2:
-            return 'Your last answer is incorrect.'
+            return 'Your last answer is incorrect. The decisions of the BU managers do not affect the reward of the Supervisor.'
 
 class FirstStageWarn(Page):
     def is_displayed(self):

@@ -13,20 +13,23 @@
             <li>The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the total bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.</li>
             <li>At the bottom of this screen, you will first indicate whether you want to pay for information about the individual investments of the BU Managers.</li>
             <li>If you click ‘NO’, you immediately allocate the bonus pool between the two BU managers. Your reward is then equal to 15 Lira.</li>
-            <li>If you click ‘YES’, you first indicate your willingness to pay for the information from 0.1 to 5 Lira before allocating the bonus pool.</li>
+            <li>If you click ‘YES’, you indicate your willingness to pay for the information from 0.1 to 5 Lira with increments of 0.1 Lira before allocating the bonus pool.</li>
             <li>
-                Next, the computer compares your willingness to pay to a random number between 0 Lira and 5 Lira. Every number between 0 Lira and 5 Lira has an equal probability to be chosen.
+                The chance of getting the information increases linearly with the amount you are willing to pay.
+            </li>
+            <li>
+                Specifically, the computer compares your willingness to pay to a random number between 0 Lira and 5 Lira. Every number between 0 Lira and 5 Lira has an equal probability to be chosen.
             </li>
             <ul>
                 <li>
-                    If the Supervisor’s willingness to pay < the randomly determined number, he or she does not receive the information and his or her total reward is: 15 Lira.
+                    If your willingness to pay < the random number, you do not receive the information and your total reward is: 15 Lira.
                 </li>
                 <li>
-                    If the Supervisor’s willingness to pay ≥ the randomly determined number, he or she receives the information and his or her total reward is: 15 Lira – randomly determined number.
+                    If your willingness to pay ≥ the random number, you receive the information and your total reward is: 15 Lira – random number.
                 </li>
             </ul>
             <li>
-                When the Supervisor’s willingness to pay is 5 Lira, he or she receives the information and his or her total reward is: 15 Lira – randomly determined number.
+                If your willingness to pay is 5 Lira, you receive the information and your total reward is: 15 Lira – random number.
             </li>
         </ul>
     </div>

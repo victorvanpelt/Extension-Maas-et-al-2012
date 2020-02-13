@@ -1,4 +1,5 @@
 import random
+import sys
 from otree.api import (
     models,
     widgets,
@@ -126,7 +127,7 @@ class Group(BaseGroup):
         )
     pricepay_e = models.FloatField(
         widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
-        min=0,
+        min=0.1,
         initial=None,
         max=5,
         )
@@ -157,11 +158,10 @@ class Group(BaseGroup):
             self.pricepay = self.pricepay_r
 
     def define_info(self):
-        rn = 0
-        while rn==5 | rn==0:
+        rn = random.uniform(0, 5)
+        while rn == 0 or rn == 5:
             rn = random.uniform(0, 5)
         self.price_random = rn
-        # self.price_random = random.uniform(0, 5.0)
         if self.pricepay >= self.price_random:
             self.info = 1
             self.actualpricepay = round(self.price_random, 2)

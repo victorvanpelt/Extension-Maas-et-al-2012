@@ -23,8 +23,8 @@
 {% else %}
     <div class="card card-body bg-light instructions">
         <ul>
-            <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the randomly determined number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
-            <li>Since your willingness to pay is lower than the randomly determined number, you do not obtain the information.</li>
+            <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the random number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
+            <li>Since your willingness to pay is lower than the random number, you do not obtain the information.</li>
             <li>Thus, your reward is unchanged and equal to 15 Lira.</li>
             <li>The total investment by the two BU managers is {{ group.total_effort | floatformat:0 }} Lira</li>
             <li>The total available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
@@ -51,7 +51,7 @@
             var emp_one_perc = 100 - emp_two_perc;
             var emp_two = {{ group.pool }} * emp_two_perc/100;
             var emp_one = {{ group.pool }} * emp_one_perc/100;
-            document.getElementById("demo1").innerHTML = emp_one + ' Lira ('+ emp_one_perc +' %) for Manager A and ' + emp_two + ' Lira ('+emp_two_perc+' %) for Manager B';
+            document.getElementById("demo1").innerHTML = emp_one + ' Lira ('+ emp_one_perc +'%) for Manager A and ' + emp_two + ' Lira ('+emp_two_perc+'%) for Manager B';
             $('#check_allocation').val(1);
         });
     </script>

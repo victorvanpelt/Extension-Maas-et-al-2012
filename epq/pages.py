@@ -97,8 +97,6 @@ class Survey4(Page):
 class Survey5(Page):
     form_model = 'player'
     form_fields = [
-        'age',
-        'gender',
         'trust1',
         'trust2',
         'trust3',
@@ -109,6 +107,23 @@ class Survey5(Page):
         'trust8',
         'trust9',
         'trust10'
+    ]
+
+    def get_form_fields(self):
+        fields = self.form_fields
+        random.shuffle(fields)
+        return fields
+
+class Survey5(Page):
+    form_model = 'player'
+    form_fields = [
+        'age',
+        'gender',
+        'nationality',
+        'educational_level',
+        'educational_track',
+        'workexperience',
+        'english'
     ]
 
     def get_form_fields(self):

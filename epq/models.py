@@ -202,17 +202,6 @@ class Player(BasePlayer):
     )
 
     #Survey 5
-    gender = models.IntegerField(
-        label="Please select your gender.",
-        blank=False,
-        choices=[
-            [1, 'Male'],
-            [2, 'Female'],
-            [3, 'Other'],
-        ]
-    )
-    age = models.IntegerField(label="Please enter your age.", min=14, max=90, blank=False)
-
     trust1 = models.IntegerField(
         label="I trust others.",
         choices=Constants.StandardChoices
@@ -253,3 +242,73 @@ class Player(BasePlayer):
         label="I respect authority.",
         choices=Constants.StandardChoices
     )
+
+    #Survey 6
+    nationality = models.IntegerField(
+        label="Please select your region of residence.",
+        blank=False,
+        choices=[
+            [1, 'North-America'],
+            [2, 'Central and South-America'],
+            [3, 'Asia'],
+            [4, 'Europe'],
+            [5, 'Australia and Oceania'],
+            [6, 'Africa'],
+            [7, 'I prefer not to say']
+        ]
+    )
+
+    education_level = models.IntegerField(
+        label = "What best describes your current educational level?",
+        choices = [
+            [1, 'Bachelor degree'],
+            [2, 'Master degree'],
+            [3, 'Other'],
+            [4, 'I prefer not to say']
+        ]
+    )
+    education_track = models.IntegerField(
+        label = "What best describes your current educational track?",
+        choices = [
+            [1, 'Economics'],
+            [2, 'Business administration'],
+            [3, 'Behavioral sciences'],
+            [4, 'Humanities'],
+            [5, 'Law'],
+            [6, 'Other'],
+            [7, 'I prefer not to say']
+        ]
+    )
+
+    workexperience = models.IntegerField(
+        label="Please indicate your work experience. All jobs count, including part-time and volunteer work.",
+        blank=False,
+        choices=[
+            [1, 'I do not have work experience.'],
+            [2, 'Less than 5 years work experience.'],
+            [3, '5 to 10 years of work experience'],
+            [4, '10 to 20 years work experience.'],
+            [5, '20 to 30 years work experience.'],
+            [6, '30 to 40 years work experience.'],
+            [7, '40 years or more work experience.']
+        ]
+    )
+
+    english = models.IntegerField(
+        label="Please rate your English on a percentage scale between 0 and 100.",
+        min=0,
+        max=100,
+        blank=False,
+        initial=None
+    )
+
+    gender = models.IntegerField(
+        label="Please select your gender.",
+        blank=False,
+        choices=[
+            [1, 'Male'],
+            [2, 'Female'],
+            [3, 'Other'],
+        ]
+    )
+    age = models.IntegerField(label="Please enter your age.", min=14, max=90, blank=False)
