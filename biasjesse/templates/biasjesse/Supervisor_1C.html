@@ -9,7 +9,7 @@
     <div class="card card-body bg-light instructions">
         <ul>
             <li>You have indicated that you want to pay for information about the individual investments of the BU managers.</li>
-            <li>The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the total bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.</li>
+            <li>The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.</li>
             <li>•	You can obtain information about individual investments by indicating your willingness to pay from 0.1 Lira to 5 Lira with increments of 0.1 Lira. </li>
             <li>
                 •	The chance of getting the information increases linearly with the amount you are willing to pay.
@@ -19,14 +19,14 @@
             </li>
             <ul>
                 <li>
-                    If your willingness to pay < the random number, you do not receive the information and his or her total reward is: 15 Lira.
+                    If your willingness to pay < the random number, you do not receive the information and his or her reward is: 15 Lira.
                 </li>
                 <li>
-                    If your willingness to pay ≥ the random number, you receive the information and his or her total reward is: 15 Lira – random number.
+                    If your willingness to pay ≥ the random number, you receive the information and his or her reward is: 15 Lira – random number.
                 </li>
             </ul>
             <li>
-                If your willingness to pay is 5 Lira, you receive the information and your total reward is: 15 Lira – random number.
+                If your willingness to pay is 5 Lira, you receive the information and your reward is: 15 Lira – random number.
             </li>
             <li>By dragging the slider, you can see how your willingness to pay affects your chances of getting the information.</li>
         </ul>

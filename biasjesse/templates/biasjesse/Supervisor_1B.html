@@ -12,7 +12,7 @@
                 Your task is to allocate the bonus pool between the two BU managers.
             </li>
             <li>
-                The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the total bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.
+                The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.
             </li>
             <li>
                 You can obtain information about individual investments by indicating your willingness to pay from 0 Lira to 5 Lira with increments of 0.1 Lira.
@@ -24,14 +24,14 @@
                 Specifically, the computer will draw a random number between 0 Lira to 5 Lira. Every number between 0 Lira to 5 Lira has an equal probability to be chosen.
             </li>
             <ul>
-                <li>If your willingness to pay < the random number, you do not receive the information and his or her total reward is: 15 Lira.</li>
-                <li>If your willingness to pay ≥ the random number, you receive the information and his or her total reward is: 15 Lira – random number.</li>
+                <li>If your willingness to pay < the random number, you do not receive the information and his or her reward is: 15 Lira.</li>
+                <li>If your willingness to pay ≥ the random number, you receive the information and his or her reward is: 15 Lira – random number.</li>
             </ul>
             <li>
-                If your willingness to pay is 0 Lira, you do not receive the information and your total reward is: 15 Lira.
+                If your willingness to pay is 0 Lira, you do not receive the information and your reward is: 15 Lira.
             </li>
             <li>
-                If your willingness to pay is 5 Lira, you receive the information and your total reward is: 15 Lira – random number.
+                If your willingness to pay is 5 Lira, you receive the information and your reward is: 15 Lira – 5 Lira = 10 Lira.
             </li>
             <li>
                 By dragging the slider, you can see how your willingness to pay affects your chances of getting the information.

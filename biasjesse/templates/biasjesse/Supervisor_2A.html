@@ -10,11 +10,11 @@
 
     <div class="card card-body bg-light instructions">
         <ul>
-            <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the randomly determined number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
-            <li>Since your willingness to pay is at least equal to the randomly determined number, you obtain the information.</li>
-            <li>Thus, your reward of 15 Lira is reduced with the randomly determined number of {{ group.actualpricepay | floatformat:2 }} Lira.</li>
+            <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the random number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
+            <li>Since your willingness to pay is equal to or greater than the random number, you obtain the information.</li>
+            <li>Thus, your reward of 15 Lira is reduced with the random number of {{ group.actualpricepay | floatformat:2 }} Lira.</li>
             <li>The total investment by the two BU managers is {{ group.total_effort | floatformat:0 }} Lira</li>
-            <li>The total available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
+            <li>The available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
             <li>The investment of BU manager A was {{ group.effort_a | floatformat:0 }} out of 10 Lira.</li>
             <li>The investment of BU manager B was {{ group.effort_b | floatformat:0 }} out of 10 Lira.</li>
         </ul>
@@ -27,7 +27,7 @@
             <li>Since your willingness to pay is lower than the random number, you do not obtain the information.</li>
             <li>Thus, your reward is unchanged and equal to 15 Lira.</li>
             <li>The total investment by the two BU managers is {{ group.total_effort | floatformat:0 }} Lira</li>
-            <li>The total available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
+            <li>The available bonus pool for the BU managers is {{ group.pool | floatformat:2 }} Lira.</li>
         </ul>
     </div>
     <br>

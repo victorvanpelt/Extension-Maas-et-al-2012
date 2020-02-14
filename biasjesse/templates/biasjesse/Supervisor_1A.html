@@ -10,7 +10,7 @@
     <div class="card card-body bg-light instructions">
         <ul>
             <li>Your task is to allocate the bonus pool between the two BU managers.</li>
-            <li>The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the total bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.</li>
+            <li>The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.</li>
             <li>At the bottom of this screen, you will first indicate whether you want to pay for information about the individual investments of the BU Managers.</li>
             <li>If you click ‘NO’, you immediately allocate the bonus pool between the two BU managers. Your reward is then equal to 15 Lira.</li>
             <li>If you click ‘YES’, you indicate your willingness to pay for the information from 0.1 to 5 Lira with increments of 0.1 Lira before allocating the bonus pool.</li>
@@ -22,14 +22,14 @@
             </li>
             <ul>
                 <li>
-                    If your willingness to pay < the random number, you do not receive the information and your total reward is: 15 Lira.
+                    If your willingness to pay < the random number, you do not receive the information and your reward: is: 15 Lira.
                 </li>
                 <li>
-                    If your willingness to pay ≥ the random number, you receive the information and your total reward is: 15 Lira – random number.
+                    If your willingness to pay ≥ the random number, you receive the information and your reward is: 15 Lira – random number.
                 </li>
             </ul>
             <li>
-                If your willingness to pay is 5 Lira, you receive the information and your total reward is: 15 Lira – random number.
+                If your willingness to pay is 5 Lira, you receive the information and your reward is: 15 Lira – random number.
             </li>
         </ul>
     </div>

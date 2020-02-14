@@ -23,7 +23,7 @@
     <div class="card card-body bg-light instructions" xmlns="http://www.w3.org/1999/html">
     <ul>
         <li>
-             In this next activity, you will see a field with {{ num_boxes }} boxes.
+             Welcome to the non-interactive part of this study. In this next activity, you will see a field with {{ num_boxes }} boxes.
         </li>
         <li>
             Each box you collect gives you {{ box_value|floatformat }} Lira.
@@ -32,19 +32,19 @@
             However, behind one of the boxes hides one bomb that destroys everything that has been collected.
         </li>
         <li>
-            While you do not know where the bomb is located, it can be in any place with equal probability.
+            While you do not know where the bomb is located, it can be behind any box with equal probability.
         </li>
         <li>
-            Your task is to choose how many boxes to randomly collect by filling in a number between 0 and {{ num_boxes }}.
+            Your task is to choose how many boxes to collect by filling in a number between 0 and {{ num_boxes }}.
         </li>
         <li>
             After you have filled in your number, press 'Stop' and 'Solve' to finalize your decision.
         </li>
         <li>
-            If your random selection of boxes does not contain the bomb, you earn {{ box_value|floatformat }} Lira for every collected box.
+            If your random collection of boxes does not contain the bomb, you earn {{ box_value|floatformat }} Lira for every collected box.
         </li>
         <li>
-            If you collect the box where the bomb is located, the bomb will explode and you will earn 0 Euro.
+            If your random collection of boxes does contain the bomb, the bomb will explode and you will earn 0 Lira.
         </li>
     </ul>
     </div>

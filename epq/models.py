@@ -258,7 +258,7 @@ class Player(BasePlayer):
         ]
     )
 
-    education_level = models.IntegerField(
+    educational_level = models.IntegerField(
         label = "What best describes your current educational level?",
         choices = [
             [1, 'Bachelor degree'],
@@ -267,7 +267,7 @@ class Player(BasePlayer):
             [4, 'I prefer not to say']
         ]
     )
-    education_track = models.IntegerField(
+    educational_track = models.IntegerField(
         label = "What best describes your current educational track?",
         choices = [
             [1, 'Economics'],
