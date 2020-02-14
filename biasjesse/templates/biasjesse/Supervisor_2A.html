@@ -4,7 +4,50 @@
 {% block title %}
     Round {{ subsession.round_number  }} - Supervisor
 {% endblock %}
+{% block styles %}
+<style>
+       .myclass::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
+        border: 1px solid #000000;
+        height: 21px !important;
+        width: 10px !important;
+        border-radius: 0px !important;
+        background: #ffffff !important;
+        cursor: pointer !important !important;
+        -webkit-appearance: none !important;
+        margin-top: -7px !important;
+    }
 
+    input[name=allocation_b] {
+        -webkit-appearance: none;
+        margin: 18px 0;
+        width: 100%;
+    }
+
+    input[name=allocation_b]:focus {
+        outline: none;
+    }
+
+    input[name=allocation_b]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8.4px;
+        cursor: pointer;
+        animate: 0.2s;
+        {#box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;#}
+        background: #007afe;
+        border-radius: 0px;
+        border: 0.0px solid #ffffff;
+    }
+
+    input[name=allocation_b]::-webkit-slider-thumb {
+        border: 0px;
+        height: 0px;
+        width: 0px;
+        border-radius: 0px;
+        -webkit-appearance: none;
+    }
+</style>
+{% endblock %}
 {% block content %}
 {% if group.info == 1 %}
 
@@ -33,11 +76,10 @@
     <br>
 {% endif %}
     <input type="hidden" name="check_allocation" value="" id="check_allocation"/>
-
-    <p align="center">Please allocate a percentage of the bonus pool to each of the BU Managers.</p>
+    <p align="center">Click on the bar below to reveal the slider.<br> Drag the slider to allocate a percentage of the bonus pool to each of the BU Managers.</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
-    {% formfield group.allocation_b label=None %}
+        <input type="range" name="allocation_b" value="None" step="1" style="width:500px" min="0" max="100" id="id_allocation_b" class="form-control">
     </div>
     <br>
     {% next_button %}
@@ -46,13 +88,20 @@
 
 {% block scripts %}
     <script>
+    $(document).ready(function () {
+        $('input[name=allocation_b]').on('input change', function () {
+            $('input[name=allocation_b]').addClass('myclass');
+        });
         $('input[name=allocation_b]').on('input', function() {
             var emp_two_perc = $(this).val();
             var emp_one_perc = 100 - emp_two_perc;
-            var emp_two = {{ group.pool }} * emp_two_perc/100;
+            var emp_two = ({{ group.pool }} * emp_two_perc/100);
             var emp_one = {{ group.pool }} * emp_one_perc/100;
-            document.getElementById("demo1").innerHTML = emp_one + ' Lira ('+ emp_one_perc +'%) for Manager A and ' + emp_two + ' Lira ('+emp_two_perc+'%) for Manager B';
+            var emp_one_r = emp_one.toFixed(2)
+            var emp_two_r = emp_two.toFixed(2)
+            document.getElementById("demo1").innerHTML = emp_one_r + ' Lira ('+ emp_one_perc +'%) for Manager A and ' + emp_two_r + ' Lira ('+emp_two_perc+'%) for Manager B';
             $('#check_allocation').val(1);
         });
+    });
     </script>
 {% endblock %}

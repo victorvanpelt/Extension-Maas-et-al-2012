@@ -1,6 +1,49 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
+{% block styles %}
+<style>
+       .myclass::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
+        border: 1px solid #000000;
+        height: 21px !important;
+        width: 10px !important;
+        border-radius: 0px !important;
+        background: #ffffff !important;
+        cursor: pointer !important !important;
+        -webkit-appearance: none !important;
+        margin-top: -7px !important;
+    }
 
+    input[name=effort_a] {
+        -webkit-appearance: none;
+        margin: 18px 0;
+        width: 100%;
+    }
+
+    input[name=effort_a]:focus {
+        outline: none;
+    }
+
+    input[name=effort_a]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8.4px;
+        cursor: pointer;
+        animate: 0.2s;
+        {#box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;#}
+        background: #007afe;
+        border-radius: 0px;
+        border: 0.0px solid #ffffff;
+    }
+
+    input[name=effort_a]::-webkit-slider-thumb {
+        border: 0px;
+        height: 0px;
+        width: 0px;
+        border-radius: 0px;
+        -webkit-appearance: none;
+    }
+</style>
+{% endblock %}
 {% block title %}
     Round {{ subsession.round_number  }} - BU Manager
 {% endblock %}
@@ -21,10 +64,10 @@
     </div>
     <br>
     <input type="hidden" name="check_effort" value="" id="check_effort"/>
-    <p align="center">Please choose the amount you want to invest (0-10, whole numbers only):</p>
+    <p align="center">Click on the bar below to reveal the slider.<br> Drag the slider to choose the amount you want to invest (0-10, whole numbers only):</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
-        {% formfield group.effort_a label=None %}
+    <input type="range" name="effort_a" value="None" step="1" style="width:500px" min="0" max="10" id="id_effort_a" class="form-control">
     </div>
     <br>
     {% next_button %}
@@ -32,10 +75,15 @@
 {% endblock %}
 
 {% block scripts %}
-    <script>
+<script>
+    $(document).ready(function () {
+        $('input[name=effort_a]').on('input change', function () {
+            $('input[name=effort_a]').addClass('myclass');
+        });
         $('input[name=effort_a]').on('input', function() {
             document.getElementById("demo1").innerHTML = $(this).val()+' Lira';
             $('#check_effort').val(1);
         });
-    </script>
+    });
+</script>
 {% endblock %}
