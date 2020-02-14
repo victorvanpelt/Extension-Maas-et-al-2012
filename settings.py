@@ -106,12 +106,14 @@ USE_POINTS = True
 POINTS_DECIMAL_PLACES = 2
 REAL_WORLD_CURRENCY_DECIMAL_PLACES = 2
 
-ROOMS = [{
-        'name': 'CenterLab',
-        'display_name': 'Room for CenterLab',
-        'participant_label_file': 'centerlablabels.txt',
-        'use_secure_urls':True,
-    },]
+ROOMS = [
+    dict(
+        name= 'CenterLab',
+        display_name= 'Room for CenterLab',
+        participant_label_file= 'centerlablabels.txt',
+        use_secure_urls= True,
+    ),
+]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
