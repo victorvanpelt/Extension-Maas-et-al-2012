@@ -50,8 +50,7 @@
 {% endblock %}
 {% block content %}
 {% if group.info == 1 %}
-
-    <div class="card card-body bg-light instructions">
+    <div class="card card-body bg-light instructions" align="left">
         <ul>
             <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the random number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
             <li>Since your willingness to pay is equal to or greater than the random number, you obtain the information.</li>
@@ -64,7 +63,7 @@
     </div>
     <br>
 {% else %}
-    <div class="card card-body bg-light instructions">
+    <div class="card card-body bg-light instructions" align="left">
         <ul>
             <li>Your willingness to pay for the information was {{ group.pricepay | floatformat:2 }} Lira and the random number by the computer was {{ group.price_random | floatformat:2 }} Lira.</li>
             <li>Since your willingness to pay is lower than the random number, you do not obtain the information.</li>
@@ -76,7 +75,7 @@
     <br>
 {% endif %}
     <input type="hidden" name="check_allocation" value="" id="check_allocation"/>
-    <p align="center">Click on the bar below to reveal the slider.<br> Drag the slider to allocate a percentage of the bonus pool to each of the BU Managers.</p>
+    <p align="center">Click the bar below to reveal the slider and drag it to allocate a percentage of the bonus pool to each of the BU Managers:</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
         <input type="range" name="allocation_b" value="None" step="1" style="width:500px" min="0" max="100" id="id_allocation_b" class="form-control">

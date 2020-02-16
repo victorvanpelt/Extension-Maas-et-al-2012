@@ -49,16 +49,29 @@
 </style>
 {% endblock %}
 {% block content %}
-    <div class="card card-body bg-light instructions">
+    {% if subsession.round_number == 1 or subsession.round_number == 5 %}
+    <div class="container" align="center">
+    <button onclick="func()" style="color: rgb(255,255,255); background-color: rgb(0,123,255);" type="button" class="btn btn-info" data-toggle="collapse" id="button" data-target="#demo">Hide Instructions</button>
+    <br>
+    <div id="demo" class="collapse show">
+    {% else %}
+    <div class="container" align="center">
+    <button onclick="func()" style="color: rgb(255,255,255); background-color: rgb(0,123,255);" type="button" class="btn btn-info" data-toggle="collapse" id="button" data-target="#demo">Show Instructions</button>
+    <br>
+    <div id="demo" class="collapse">
+    {% endif %}
+    <div id="container">
+    <br>
+    <div class="card card-body" align="left">
         <ul>
             <li>
                 Your task is to allocate the bonus pool between the two BU managers.
             </li>
             <li>
-                The total investment of the two BU managers is {{ group.total_effort | floatformat:0 }} Lira, the bonus pool that is available is <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.
+                You will always observe the total investment and the total bonus pool.
             </li>
             <li>
-                You can obtain information about individual investments by indicating your willingness to pay from 0 Lira to 5 Lira with increments of 0.1 Lira.
+                At the bottom of this screen, you can first indicate your willingness to pay from 0 Lira to 5 Lira with increments of 0.1 Lira to obtain information about individual investments of the BU managers.
             </li>
             <li>
                 The chance of getting the information increases linearly with the amount you are willing to pay.
@@ -81,9 +94,24 @@
             </li>
         </ul>
     </div>
+    </div>
+    </div>
+    <br>
+    <div class="card card-body bg-light instructions" align="left">
+        <ul>
+            <li>
+                The total investment made by the two BU managers is {{ group.total_effort | floatformat:0 }} Lira.
+            </li>
+            <li>
+                The bonus pool that is available is: {{ group.total_effort | floatformat:0 }} Lira * 1.5 = <span id="pool_nummer">{{ group.pool | floatformat:2 }}</span> Lira.
+            </li>
+        </ul>
+    </div>
+    </div>
     <br>
     <input type="hidden" name="check_pricepay" value="" id="check_pricepay"/>
-    <p align="center">Click on the bar below to reveal the slider.<br> Drag the slider to choose your willingness to pay for the information about the individual investments of the BU managers<br> (0.0-5.0, 1 decimal allowed):</p>
+    <input type="hidden" name="instructions_S1B" value="" id="id_instructions_S1B"/>
+    <p align="center">Click the bar below to reveal the slider and drag it to choose your willingness to pay for the information about the individual investments of the BU managers:</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
         <input type="range" name="pricepay_r" value="None" step="0.1" style="width:500px" min="0" max="5" id="id_pricepay_r" class="form-control">
@@ -107,4 +135,20 @@
         });
     });
     </script>
+    <script>
+    function func() {
+    x = document.getElementById("demo").getAttribute('class');
+    if (x == 'collapse') {
+        document.getElementById('button').textContent = 'Hide Instructions';
+    }
+    if (x == 'collapse show') {
+        document.getElementById('button').textContent = 'Show Instructions';
+    }
+    }
+</script>
+<script>
+        $('#button').click(function() {
+            $('#id_instructions_S1B').val(1);
+        });
+</script>
 {% endblock %}

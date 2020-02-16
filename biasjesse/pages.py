@@ -74,7 +74,7 @@ class Round_Warn(Page):
 
 class Manager_A(Page):
     form_model = 'group'
-    form_fields = ['effort_a', 'check_effort']
+    form_fields = ['effort_a', 'check_effort', 'instructions_MA']
 
     def error_message(self, value):
         if value["check_effort"] == None:
@@ -85,7 +85,7 @@ class Manager_A(Page):
 
 class Manager_B(Page):
     form_model = 'group'
-    form_fields = ['effort_b', 'check_effort']
+    form_fields = ['effort_b', 'check_effort', 'instructions_MB']
 
     def error_message(self, value):
         if value["check_effort"] == None:
@@ -100,7 +100,7 @@ class ManagerWait(WaitPage):
 
 class Supervisor_1A(Page):
     form_model = 'group'
-    form_fields = ['want_info_form']
+    form_fields = ['want_info_form', 'instructions_S1A']
 
     def is_displayed(self):
         if self.player.extension == 0:
@@ -116,7 +116,7 @@ class Supervisor_1A(Page):
 
 class Supervisor_1B(Page):
     form_model = 'group'
-    form_fields = ['pricepay_r', 'check_pricepay']
+    form_fields = ['pricepay_r', 'check_pricepay', 'instructions_S1B']
 
     def error_message(self, value):
         if value["check_pricepay"] == None:
@@ -134,7 +134,7 @@ class Supervisor_1B(Page):
 
 class Supervisor_1C(Page):
     form_model = 'group'
-    form_fields = ['pricepay_e', 'check_pricepay']
+    form_fields = ['pricepay_e', 'check_pricepay', 'instructions_S1C']
 
     def error_message(self, value):
         if value["check_pricepay"] == None:
@@ -214,6 +214,13 @@ class ShuffleWaitPage(WaitPage):
 class FinishPage(Page):
     def is_displayed(self):
         return self.subsession.round_number == Constants.num_rounds
+
+    def vars_for_template(self):
+        return {
+            'round_to_pay': self.participant.vars['round_to_pay'],
+            'payoff_lira': self.participant.vars['payoff_lira'],
+            'payoff_eur': self.participant.vars['payoff_eur']
+        }
 
 page_sequence = [
     TicketNumber,

@@ -49,7 +49,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card card-body bg-light instructions">
+    <div class="card card-body bg-light instructions" align="left">
         <ul>
             <li>You did not want to receive information about the individual investments.</li>
             <li>Thus, your reward is unchanged and equal to 15 Lira.</li>
@@ -59,8 +59,7 @@
     </div>
     <br>
     <input type="hidden" name="check_allocation" value="" id="check_allocation"/>
-
-    <p align="center">Click on the bar below to reveal the slider.<br> Drag the slider to allocate a percentage of the bonus pool to each of the BU Managers.</p>
+    <p align="center">Click the bar below to reveal the slider and drag it to allocate a percentage of the bonus pool to each of the BU Managers:</p>
     <b><p id="demo1" align="center"><br></p></b>
     <div align="center">
         <input type="range" name="allocation_b" value="None" step="1" style="width:500px" min="0" max="100" id="id_allocation_b" class="form-control">

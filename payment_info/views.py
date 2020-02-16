@@ -10,7 +10,6 @@ class PaymentInfo(Page):
         return {
             'redemption_code': self.participant.label or self.participant.code,
             'eur': self.participant.payoff_plus_participation_fee()
-            #'eur': self.participant.payoff * self.session.config['real_world_currency_per_point']
         }
 
 page_sequence = [PaymentInfo]

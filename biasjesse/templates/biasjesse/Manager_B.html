@@ -50,21 +50,40 @@
 {% endblock %}
 {% block content %}
 
-    <div class="card card-body bg-light instructions">
+    {% if subsession.round_number == 1 or subsession.round_number == 5 %}
+    <div class="container" align="center">
+    <button onclick="func()" style="color: rgb(255,255,255); background-color: rgb(0,123,255);" type="button" class="btn btn-info" data-toggle="collapse" id="button" data-target="#demo">Hide Instructions</button>
+    <div id="demo" class="collapse show">
+    {% else %}
+    <div class="container" align="center">
+    <button onclick="func()" style="color: rgb(255,255,255); background-color: rgb(0,123,255);" type="button" class="btn btn-info" data-toggle="collapse" id="button" data-target="#demo">Show Instructions</button>
+    <div id="demo" class="collapse">
+    {% endif %}
+
+    <br>
+    <div class="card card-body" align="left">
         <ul>
+            <li>Your task is to decide how much of the 10 Lira to invest in a collaborative project with the other BU Manager.</li>
+            <li>
+                The sum of your and the other BU manager's individual investments (the total investment) is multiplied by 1.5 to determine the bonus pool for the BU managers.
+            </li>
+            <li>The Supervisor decides how to divide the bonus pool between you and the other BU manager. The Supervisor can choose any possible division in percentages of the bonus pool.</li>
+            <li>
+                The Supervisor always observes the total investment and the bonus pool. Also, the Supervisor can offer a price to increase his/her chances to receive information about the individual investments of both BU managers.
+            </li>
             <li>Your reward is calculated as follows:<br>
             10 – Individual Investment + amount allocated from the bonus pool
             </li>
-            <li>As a BU Manager, your task is to decide how much of the 10 Lira to invest in a collaborative project with the other BU manager.</li>
-            <li>
-                The sum of your and the other BU manager's individual investments (i.e., the total investment) is multiplied by 1.5 to determine the bonus pool for the BU managers.
-            </li>
-            <li>The Supervisor decides how to divide the bonus pool between you and the other BU manager. The Supervisor can choose any possible division in percentages of the bonus pool.</li>
         </ul>
     </div>
+
+    </div>
+    </div>
+
     <br>
     <input type="hidden" name="check_effort" value="" id="check_effort"/>
-    <p align="center">Click on the bar below to reveal the slider.<br> Drag the slider to choose the amount you want to invest (0-10, whole numbers only):</p>
+    <input type="hidden" name="instructions_MB" value="" id="id_instructions_MB"/>
+    <p align="center">Click the bar below to reveal the slider.<br> Drag it to choose how much Lira to invest in a collaborative project with the other BU Manager:</p>
     <b><p id="demo2" align="center"><br></p></b>
     <div align="center">
     <input type="range" name="effort_b" value="None" step="1" style="width:500px" min="0" max="10" id="id_effort_b" class="form-control">
@@ -85,5 +104,21 @@
             $('#check_effort').val(1);
         });
     });
+    </script>
+    <script>
+    function func() {
+    x = document.getElementById("demo").getAttribute('class');
+    if (x == 'collapse') {
+        document.getElementById('button').textContent = 'Hide Instructions';
+    }
+    if (x == 'collapse show') {
+        document.getElementById('button').textContent = 'Show Instructions';
+    }
+    }
+    </script>
+    <script>
+        $('#button').click(function() {
+            $('#id_instructions_MB').val(1);
+        });
     </script>
 {% endblock %}

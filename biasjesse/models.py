@@ -22,7 +22,7 @@ Jesse bias
 class Constants(BaseConstants):
     name_in_url = 'biasjesse'
     players_per_group = 3
-    num_rounds = 1
+    num_rounds = 8
     e_endowment = c(10)
     m_endowment = c(15)
     Pmax = c(5.0)
@@ -115,6 +115,12 @@ class Group(BaseGroup):
     check_allocation = models.FloatField(blank=True, initial=None)
     allocation_a = models.FloatField(blank=False, initial=None, min=0, max=100)
 
+    instructions_MA = models.IntegerField(blank=True, initial=0)
+    instructions_MB = models.IntegerField(blank=True, initial=0)
+    instructions_S1A = models.IntegerField(blank=True, initial=0)
+    instructions_S1B = models.IntegerField(blank=True, initial=0)
+    instructions_S1C = models.IntegerField(blank=True, initial=0)
+
     pool = models.FloatField(blank=False, initial=None)
     want_info = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], initial=0)
     want_info_form = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], widget=widgets.RadioSelect)
@@ -203,22 +209,18 @@ class Player(BasePlayer):
 
     round_start = models.BooleanField(blank=False, widget=widgets.CheckboxInput)
 
-    payoff_eur = models.CurrencyField()
-    round_to_pay = models.IntegerField()
-
     def define_condition_player(self):
         self.extension = self.participant.vars.get('extension')
 
     def set_final_payoff(self):
         if self.subsession.round_number == 1:
             self.participant.vars['round_to_pay'] = random.randint(1,Constants.num_rounds)
-            self.round_to_pay = self.participant.vars['round_to_pay']
 
         if self.subsession.round_number == self.participant.vars['round_to_pay']:
             self.pay_this_round = True
             self.payoff = self.round_result
-            self.payoff_eur = self.round_result.to_real_world_currency(self.session)
+            self.participant.vars['payoff_lira'] = self.round_result
+            self.participant.vars['payoff_eur'] = self.round_result.to_real_world_currency(self.session)
         else:
             self.pay_this_round = False
             self.payoff = c(0)
-            self.payoff_eur = 0
