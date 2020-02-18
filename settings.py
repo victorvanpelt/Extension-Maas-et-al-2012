@@ -87,7 +87,7 @@ SESSION_CONFIGS = [
     {
         'name': 'maas_extension_all',
         'display_name': "Maas Extension, Bret, EPQ",
-        'num_demo_participants': 6,
+        'num_demo_participants': 3,
         'app_sequence': ['biasjesse', 'bret', 'epq', 'payment_info'],
         'extension': 1
     },
