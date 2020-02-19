@@ -78,7 +78,7 @@ class Manager_A(Page):
 
     def error_message(self, value):
         if value["check_effort"] == None:
-            return 'Please the slider to make a decision.'
+            return 'Please use the slider to make a decision.'
 
     def is_displayed(self):
         return self.player.player_role == 1
@@ -89,7 +89,7 @@ class Manager_B(Page):
 
     def error_message(self, value):
         if value["check_effort"] == None:
-            return 'Please the slider to make a decision.'
+            return 'Please use the slider to make a decision.'
 
     def is_displayed(self):
         return self.player.player_role == 2
@@ -120,7 +120,7 @@ class Supervisor_1B(Page):
 
     def error_message(self, value):
         if value["check_pricepay"] == None:
-            return 'Please the slider to make a decision.'
+            return 'Please use the slider to make a decision.'
 
     def is_displayed(self):
         if self.player.extension == 1:
@@ -138,7 +138,7 @@ class Supervisor_1C(Page):
 
     def error_message(self, value):
         if value["check_pricepay"] == None:
-            return 'Please the slider to make a decision.'
+            return 'Please use the slider to make a decision.'
 
     def is_displayed(self):
         if self.player.extension == 0:
@@ -159,7 +159,7 @@ class Supervisor_2A(Page):
 
     def error_message(self, value):
         if value["check_allocation"] == None:
-            return 'Please the slider to make a decision.'
+            return 'Please use the slider to make a decision.'
 
     def is_displayed(self):
         if self.player.extension == 0:
@@ -182,7 +182,7 @@ class Supervisor_2B(Page):
 
     def error_message(self, value):
         if value["check_allocation"] == None:
-            return 'Please the slider to make a decision.'
+            return 'Please use the slider to make a decision.'
 
     def is_displayed(self):
         if self.player.extension ==0:
