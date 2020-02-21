@@ -176,33 +176,20 @@ class Group(BaseGroup):
             self.actualpricepay = 0
 
     def set_payoffs(self):
-        p1 = self.get_player_by_id(1)
-        p2 = self.get_player_by_id(2)
-        p3 = self.get_player_by_id(3)
         self.allocation_a = 100 - self.allocation_b
         self.bonus_a = round(self.pool * (self.allocation_a / 100), 2)
         self.bonus_b = round(self.pool * (self.allocation_b / 100), 2)
         self.payoff_a = Constants.e_endowment - c(self.effort_a) + c(self.bonus_a)
         self.payoff_b = Constants.e_endowment - c(self.effort_b) + c(self.bonus_b)
         self.payoff_s = Constants.m_endowment - c(self.actualpricepay)
-        if p1.participant.vars['role'] == 1:
-            p1.round_result = self.payoff_a
-        elif p1.participant.vars['role'] == 2:
-            p1.round_result = self.payoff_b
-        elif p1.participant.vars['role'] == 3:
-            p1.round_result = self.payoff_s
-        if p2.participant.vars['role'] == 1:
-            p2.round_result = self.payoff_a
-        elif p2.participant.vars['role'] == 2:
-            p2.round_result = self.payoff_b
-        elif p2.participant.vars['role'] == 3:
-            p2.round_result = self.payoff_s
-        if p3.participant.vars['role'] == 1:
-            p3.round_result = self.payoff_a
-        elif p3.participant.vars['role'] == 2:
-            p3.round_result = self.payoff_b
-        elif p3.participant.vars['role'] == 3:
-            p3.round_result = self.payoff_s
+
+        for p in self.get_players():
+            if p.player_role == 1:
+                p.round_result = self.payoff_a
+            elif p.player_role ==2:
+                p.round_result = self.payoff_b
+            else:
+                p.round_result = self.payoff_s
 
 class Player(BasePlayer):
     player_role = models.IntegerField()
