@@ -114,7 +114,7 @@ class Survey5(Page):
         random.shuffle(fields)
         return fields
 
-class Survey5(Page):
+class Survey6(Page):
     form_model = 'player'
     form_fields = [
         'age',
@@ -137,7 +137,8 @@ page_sequence = [
     Survey2,
     Survey3,
     Survey4,
-    Survey5
+    Survey5,
+    Survey6
 ]
 
 tot_pages = len(page_sequence)-1
