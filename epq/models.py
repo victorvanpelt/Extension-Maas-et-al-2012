@@ -67,7 +67,7 @@ class Player(BasePlayer):
         choices=Constants.StandardChoices
     )
     fun5 = models.IntegerField(
-        label="I started to loose my interest as the study progressed.",
+        label="I started to lose my interest as the study progressed.",
         choices=Constants.StandardChoices
     )
     info_diff = models.IntegerField(
@@ -285,8 +285,8 @@ class Player(BasePlayer):
         blank=False,
         choices=[
             [1, 'I do not have work experience.'],
-            [2, 'Less than 5 years work experience.'],
-            [3, '5 to 10 years of work experience'],
+            [2, 'Less than 5 years of work experience.'],
+            [3, '5 to 10 years of work experience.'],
             [4, '10 to 20 years work experience.'],
             [5, '20 to 30 years work experience.'],
             [6, '30 to 40 years work experience.'],
