@@ -121,9 +121,6 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
 <p>
-    This is the jesse bias app created by Victor, Bart, and Jesse.
-</p>
-<p>
     <a href="https://www.victorvanpelt.com" target="_blank">
         Personal Website
     </a>
