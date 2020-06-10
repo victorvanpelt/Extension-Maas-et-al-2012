@@ -132,7 +132,7 @@ DEMO_PAGE_INTRO_HTML = """
 </p>
 """
 
-SECRET_KEY = '+dge8h-hu^x9wqh5=bfifw80t9#ri3+83u!vn!cunkej93dsxz'
+SECRET_KEY = environ.get('SECRET_KEY')
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
