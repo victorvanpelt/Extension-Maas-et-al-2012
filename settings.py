@@ -120,16 +120,6 @@ ADMIN_USERNAME = 'admin'
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """
-<p>
-    <a href="https://www.victorvanpelt.com" target="_blank">
-        Personal Website
-    </a>
-<p>    
-<p>
-    <a href="https://github.com/victorvanpelt/" target="_blank">
-        GitHub Profile
-    </a>
-</p>
 """
 
 SECRET_KEY = environ.get('SECRET_KEY')
