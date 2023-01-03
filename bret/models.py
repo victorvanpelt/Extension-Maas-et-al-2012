@@ -3,7 +3,6 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
-from django.conf import settings
 from .config import Constants
 
 author = 'Felix Holzmeister & Armin Pfurtscheller'

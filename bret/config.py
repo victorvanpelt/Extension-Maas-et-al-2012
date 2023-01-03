@@ -1,5 +1,4 @@
 from otree.api import BaseConstants, Currency
-from django.conf import settings
 
 # ******************************************************************************************************************** #
 # *** CLASS CONSTANTS *** #

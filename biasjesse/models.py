@@ -10,7 +10,6 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-from django.conf import settings
 
 author = 'Jesse'
 
