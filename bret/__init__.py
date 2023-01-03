@@ -161,7 +161,7 @@ def set_payoff(player: Player):
             player.payoff_for_results = round(player.round_result, 2)
             player.payoff_for_results_eur = round(
                 player.round_result
-                * settings.SESSION_CONFIG_DEFAULTS['real_world_currency_per_point'],
+                * player.session.config['real_world_currency_per_point'],
                 2,
             )
         else:

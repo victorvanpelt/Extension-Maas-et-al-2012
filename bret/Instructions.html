@@ -26,7 +26,7 @@
              Welcome to the non-interactive part of this study. In this next activity, you will see a field with {{ num_boxes }} boxes.
         </li>
         <li>
-            Each box you collect gives you {{ box_value|floatformat }} Lira.
+            Each box you collect gives you {{ box_value|to2 }} Lira.
         </li>
         <li>
             However, behind one of the boxes hides one bomb that destroys everything that has been collected.
@@ -41,7 +41,7 @@
             After you have filled in your number, press 'Stop' and 'Solve' to finalize your decision.
         </li>
         <li>
-            If your random collection of boxes does not contain the bomb, you earn {{ box_value|floatformat }} Lira for every collected box.
+            If your random collection of boxes does not contain the bomb, you earn {{ box_value|to2 }} Lira for every collected box.
         </li>
         <li>
             If your random collection of boxes does contain the bomb, the bomb will explode and you will earn 0 Lira.
