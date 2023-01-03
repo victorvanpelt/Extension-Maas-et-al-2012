@@ -164,7 +164,8 @@ def creating_session(subsession: Subsession):
     # Give people their roles and the condition
     for p in subsession.get_players():
         p.player_role = p.participant.vars['role']
-        p.define_condition_player()
+        p.extension = p.participant.vars.get('extension')
+
     # Give group condition
     for g in subsession.get_groups():
         g.extension = subsession.session.config['extension']
@@ -215,8 +216,8 @@ def set_payoffs(group: Group):
             p.round_result = group.payoff_s
 
 
-def define_condition_player(player: Player):
-    player.extension = player.participant.vars.get('extension')
+# def define_condition_player(player: Player):
+#     player.extension = player.participant.vars.get('extension')
 
 
 def set_final_payoff(player: Player):
