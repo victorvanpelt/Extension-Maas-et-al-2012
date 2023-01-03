@@ -88,29 +88,32 @@ class Subsession(BaseSubsession):
 
 class Group(BaseGroup):
     extension = models.IntegerField()
-    effort_a = models.FloatField(
-        widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
-        min=0,
-        initial=None,
-        max=10,
-        blank=True
-        )
-    effort_b = models.FloatField(
-        widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
-        min=0,
-        initial=None,
-        max=10,
-        blank=True
-        )
+    effort_a = models.IntegerField(min=0, max=10, initial=None, label="", blank=True)
+    # effort_a = models.FloatField(
+    #     widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
+    #     min=0,
+    #     initial=None,
+    #     max=10,
+    #     blank=True
+    #     )
+    effort_b = models.IntegerField(min=0, max=10, initial=None, label="", blank=True)
+    # effort_b = models.FloatField(
+    #     widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
+    #     min=0,
+    #     initial=None,
+    #     max=10,
+    #     blank=True
+    #     )
     check_effort = models.FloatField(blank=True, initial=None)
     total_effort = models.FloatField(blank=True, initial=None)
 
-    allocation_b = models.FloatField(
-        widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
-        min=0,
-        initial=None,
-        max=100,
-        )
+    allocation_b = models.IntegerField(min=0, max=100, initial=None, label="")
+    # allocation_b = models.FloatField(
+    #     widget=widgets.SliderInput(attrs={'step': '1', 'style': 'width:500px'}, show_value=False),
+    #     min=0,
+    #     initial=None,
+    #     max=100,
+    #     )
     check_allocation = models.FloatField(blank=True, initial=None)
     allocation_a = models.FloatField(blank=False, initial=None, min=0, max=100)
 
@@ -124,18 +127,20 @@ class Group(BaseGroup):
     want_info = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], initial=0)
     want_info_form = models.IntegerField(blank=False, choices=[[1, 'Yes'],[0, 'No']], widget=widgets.RadioSelect)
 
-    pricepay_r = models.FloatField(
-        widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
-        min=0,
-        initial=None,
-        max=5,
-        )
-    pricepay_e = models.FloatField(
-        widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
-        min=0.1,
-        initial=None,
-        max=5,
-        )
+    pricepay_r = models.FloatField(min=0, max=5, initial=None, label="", step=0.1)
+    # pricepay_r = models.FloatField(
+    #     widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
+    #     min=0,
+    #     initial=None,
+    #     max=5,
+    #     )
+    pricepay_e = models.FloatField(min=0.1, max=5, initial=None, label="", step=0.1)
+    # pricepay_e = models.FloatField(
+    #     widget=widgets.SliderInput(attrs={'step': '0.1', 'style': 'width:500px'}, show_value=False),
+    #     min=0.1,
+    #     initial=None,
+    #     max=5,
+    #     )
     pricepay = models.FloatField()
     check_pricepay = models.FloatField(blank=True, initial=None)
     price_random = models.FloatField(blank=True, initial=None)

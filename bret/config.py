@@ -1,3 +1,4 @@
+from otree import session
 from otree.api import BaseConstants, Currency
 
 # ******************************************************************************************************************** #
@@ -18,7 +19,7 @@ class Constants(BaseConstants):
     # note that the currency of any earnings is determined by the oTree settings in settings.py
     # if you set this to a decimal number, you must set POINTS_DECIMAL_PLACES in settings.py
     box_value = 0.10
-    box_value_eur = 0.10 * settings.SESSION_CONFIG_DEFAULTS['real_world_currency_per_point']
+    box_value_eur = 0.10 * 0.50
 
     # number of rows and columns
     # i.e. the total number of boxes is determined by <num_rows> times <num_cols>
