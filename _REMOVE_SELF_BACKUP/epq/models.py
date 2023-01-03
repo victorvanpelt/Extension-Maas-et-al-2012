@@ -52,195 +52,195 @@ class Player(BasePlayer):
     #Survey1
     fun1 = models.IntegerField(
         label="I participated seriously in the study.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     fun2 = models.IntegerField(
         label="I thought well about my choices before making any decisions.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     fun3 = models.IntegerField(
         label="I really cared about the outcomes of my decisions.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     fun4 = models.IntegerField(
         label="I got more and more involved as the study progressed.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     fun5 = models.IntegerField(
         label="I started to lose my interest as the study progressed.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     info_diff = models.IntegerField(
         label="The procedure that supervisors have to go through to get access to information about the individual investments was difficult to understand.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
 
     #Survey 2 (supervisor last) (Managers last)
     sup1 = models.IntegerField(
         label="In general I was curious about the separate investments of the two BU managers.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup2 = models.IntegerField(
         label="In general, I wanted to know whether one BU manager had invested more than the other.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup3 = models.IntegerField(
         label="I wanted to reward BU managers who acted cooperatively.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup4 = models.IntegerField(
         label="I wanted to punish BU managers who did not act cooperatively.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup5 = models.IntegerField(
         label="I thought BU managers who made small investments acted unfairly.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup6 = models.IntegerField(
         label="I thought it was important that BU managers who tried to get more than their fair share got punished.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup7 = models.IntegerField(
         label="I thought it was important that BU managers who acted in the common interest got rewarded.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup8 = models.IntegerField(
         label="I thought it was important that BU managers who acted in the common interest got at least a fair return.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup9 = models.IntegerField(
         label="I wanted to teach the BU managers a lesson that they should cooperate with each other.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup10 = models.IntegerField(
         label="I wanted to teach the BU managers a lesson that small investments are unacceptable.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
 
     #Survey 3 (supervisor last) (managers last)
     sup11 = models.IntegerField(
         label="I wanted to repay the trust that BU managers placed in me by investing part of their base amount.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup12 = models.IntegerField(
         label="I wanted to reward those BU managers who expected me to be a fair supervisor.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup13 = models.IntegerField(
         label="I wanted to punish those BU managers who did not expect me to be a fair supervisor.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup14 = models.IntegerField(
         label="I did not want to disappoint BU managers who trusted me to reward high investments.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup15 = models.IntegerField(
         label="I wanted to show that I am a trustworthy person.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup16 = models.IntegerField(
         label="My offers for the information depended on the total investment of the two BU managers.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup17 = models.IntegerField(
         label="My offers for the information depended on the number of combinations of individual investments that could have led to the total investment.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     sup18 = models.IntegerField(
         label="I was likely to offer a higher price for the information if there was a bigger chance that one of the BU managers had invested much more than the other.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
 
     #Survey 4  (supervisors last) (managers last) (managers always)
     man1 = models.IntegerField(
         label="I felt it was my duty to make high investments.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man2 = models.IntegerField(
         label="I felt that not making high investments was uncooperative.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man3 = models.IntegerField(
         label="I felt that making high investments was the fair thing to do.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man4 = models.IntegerField(
         label="I felt that not making high investments was unfair to the other BU manager.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man5 = models.IntegerField(
         label="I felt that not making high investments was unfair towards the supervisor.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man6 = models.IntegerField(
         label="In general, I trusted the supervisors to give me a fair reward.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man7 = models.IntegerField(
         label="My trust in the supervisors increased during the study.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man8 = models.IntegerField(
         label="My trust in the other BU managers increased during the study.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man9 = models.IntegerField(
         label="My trust in the supervisors decreased during the study.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man10 = models.IntegerField(
         label="My trust in the other BU managers decreased during the study.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man11 = models.IntegerField(
         label="I felt I was sometimes treated unfairly by the supervisor.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     man12 = models.IntegerField(
         label="I felt I was sometimes treated unfairly by the other BU manager.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
 
     #Survey 5
     trust1 = models.IntegerField(
         label="I trust others.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust2 = models.IntegerField(
         label="I trust what other people say.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust3 = models.IntegerField(
         label="I am wary of others.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust4 = models.IntegerField(
         label="I suspect hidden motives in others.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust5 = models.IntegerField(
         label="I distrust people.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust6 = models.IntegerField(
         label="I would never cheat on my taxes.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust7 = models.IntegerField(
         label="I turn my back on others.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust8 = models.IntegerField(
         label="I act at the expense of others.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust9 = models.IntegerField(
         label="I respect the privacy of others.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
     trust10 = models.IntegerField(
         label="I respect authority.",
-        choices=Constants.StandardChoices
+        choices=C.STANDARDCHOICES
     )
 
     #Survey 6

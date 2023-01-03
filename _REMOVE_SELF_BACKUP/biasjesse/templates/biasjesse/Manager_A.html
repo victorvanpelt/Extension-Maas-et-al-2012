@@ -1,0 +1,124 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block styles %}
+<style>
+       .myclass::-webkit-slider-thumb {
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #007afe;
+        border: 1px solid #000000;
+        height: 21px !important;
+        width: 10px !important;
+        border-radius: 0px !important;
+        background: #ffffff !important;
+        cursor: pointer !important !important;
+        -webkit-appearance: none !important;
+        margin-top: -7px !important;
+    }
+
+    input[name=effort_a] {
+        -webkit-appearance: none;
+        margin: 18px 0;
+        width: 100%;
+    }
+
+    input[name=effort_a]:focus {
+        outline: none;
+    }
+
+    input[name=effort_a]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 8.4px;
+        cursor: pointer;
+        animate: 0.2s;
+        {#box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;#}
+        background: #007afe;
+        border-radius: 0px;
+        border: 0.0px solid #ffffff;
+    }
+
+    input[name=effort_a]::-webkit-slider-thumb {
+        border: 0px;
+        height: 0px;
+        width: 0px;
+        border-radius: 0px;
+        -webkit-appearance: none;
+    }
+</style>
+{% endblock %}
+{% block title %}
+    Round {{ subsession.round_number  }} - BU Manager
+{% endblock %}
+
+{% block content %}
+
+    {% if subsession.round_number == 1 or subsession.round_number == 5 %}
+    <div class="container" align="center">
+    <button onclick="func()" style="color: rgb(255,255,255); background-color: rgb(0,123,255);" type="button" class="btn btn-info" data-toggle="collapse" id="button" data-target="#demo">Hide Instructions</button>
+    <div id="demo" class="collapse show">
+    {% else %}
+    <div class="container" align="center">
+    <button onclick="func()" style="color: rgb(255,255,255); background-color: rgb(0,123,255);" type="button" class="btn btn-info" data-toggle="collapse" id="button" data-target="#demo">Show Instructions</button>
+    <div id="demo" class="collapse">
+    {% endif %}
+
+    <br>
+    <div class="card card-body" align="left">
+        <ul>
+            <li>Your task is to decide how much of the 10 Lira to invest in a collaborative project with the other BU Manager.</li>
+            <li>
+                The sum of your and the other BU manager's individual investments (the total investment) is multiplied by 1.5 to determine the bonus pool for the BU managers.
+            </li>
+            <li>The Supervisor decides how to divide the bonus pool between you and the other BU manager. The Supervisor can choose any possible division in percentages of the bonus pool.</li>
+            <li>
+                The Supervisor always observes the total investment and the bonus pool. Also, the Supervisor can offer a price to increase his/her chances to receive information about the individual investments of both BU managers.
+            </li>
+            <li>Your reward is calculated as follows:<br>
+            10 – Individual Investment + amount allocated from the bonus pool
+            </li>
+        </ul>
+    </div>
+
+    </div>
+    </div>
+
+    <br>
+    <input type="hidden" name="check_effort" value="" id="check_effort"/>
+    <input type="hidden" name="instructions_MA" value="" id="id_instructions_MA"/>
+    <p align="center">Click the bar below to reveal the slider.<br> Drag it to choose how much Lira to invest in a collaborative project with the other BU Manager:</p>
+    <b><p id="demo1" align="center"><br></p></b>
+    <div align="center">
+    <input type="range" name="effort_a" value="None" step="1" style="width:500px" min="0" max="10" id="id_effort_a" class="form-control">
+    </div>
+    <br>
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('input[name=effort_a]').on('input change', function () {
+            $('input[name=effort_a]').addClass('myclass');
+        });
+        $('input[name=effort_a]').on('input', function() {
+            document.getElementById("demo1").innerHTML = $(this).val()+' Lira';
+            $('#check_effort').val(1);
+        });
+    });
+</script>
+<script>
+function func() {
+    x = document.getElementById("demo").getAttribute('class');
+    if (x == 'collapse') {
+        document.getElementById('button').textContent = 'Hide Instructions';
+    }
+    if (x == 'collapse show') {
+        document.getElementById('button').textContent = 'Show Instructions';
+    }
+}
+</script>
+    <script>
+        $('#button').click(function() {
+            $('#id_instructions_MA').val(1);
+        });
+    </script>
+{% endblock %}

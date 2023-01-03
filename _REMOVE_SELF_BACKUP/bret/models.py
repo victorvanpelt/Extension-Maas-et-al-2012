@@ -57,14 +57,14 @@ class Player(BasePlayer):
         if self.bomb:
             self.round_result = 0
         else:
-            self.round_result = self.boxes_collected * Constants.box_value
+            self.round_result = self.boxes_collected * C.BOX_VALUE
 
         # set payoffs if <random_payoff = True> to round_result of randomly chosen round
         # randomly determine round to pay on player level
         if self.subsession.round_number == 1:
-            self.participant.vars['round_to_pay'] = random.randint(1,Constants.num_rounds)
+            self.participant.vars['round_to_pay'] = random.randint(1,C.NUM_ROUNDS)
 
-        if Constants.random_payoff:
+        if C.RANDOM_PAYOFF:
             if self.subsession.round_number == self.participant.vars['round_to_pay']:
                 self.pay_this_round = True
                 self.payoff = c(self.round_result)
@@ -80,4 +80,4 @@ class Player(BasePlayer):
         else:
             self.payoff = c(self.round_result)
             self.payoff_for_results = round(self.round_result, 2)
-            self.payoff_for_results_eur = round(self.round_result * Constants.box_value_eur, 2)
+            self.payoff_for_results_eur = round(self.round_result * C.BOX_VALUE_EUR, 2)

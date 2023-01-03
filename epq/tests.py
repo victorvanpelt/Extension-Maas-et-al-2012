@@ -1,11 +1,11 @@
-from otree.api import Currency as c, currency_range
-from . import pages
-from ._builtin import Bot
-from .models import Constants
+from otree.api import Currency as cu, currency_range
+from . import *
+from otree.api import Bot
+
 
 
 class PlayerBot(Bot):
 
     def play_round(self):
-        yield (pages.Introduction, {'accept_info': True})
-        yield (pages.Survey1, {'name': 'VictorBot', 'age': 90})
+        yield (Introduction, {'accept_info': True})
+        yield (Survey1, {'name': 'VictorBot', 'age': 90})

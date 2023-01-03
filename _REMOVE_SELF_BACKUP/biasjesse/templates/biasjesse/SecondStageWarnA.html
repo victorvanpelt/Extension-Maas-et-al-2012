@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Last four rounds are about to start
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            This was round 4. Some participants will now change roles.
+        </li>
+        <li>
+            Please note that this is the only time roles may change.
+        </li>
+        <li>
+            You will have the same role in rounds 5 through 8.
+        </li>
+        <li>
+            Please click OK to let the computer determine your role in the last four rounds.
+        </li>
+    </ul>
+</div>
+<br>
+{% next_button %}
+{% endblock %}

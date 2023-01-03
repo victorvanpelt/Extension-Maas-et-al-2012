@@ -21,7 +21,14 @@ class Survey1(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+            'fun1',
+            'fun2',
+            'fun3',
+            'fun4',
+            'fun5',
+            'info_diff'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -41,7 +48,18 @@ class Survey2(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+            'sup1',
+            'sup2',
+            'sup3',
+            'sup4',
+            'sup5',
+            'sup6',
+            'sup7',
+            'sup8',
+            'sup9',
+            'sup10'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -62,7 +80,16 @@ class Survey3(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+            'sup11',
+            'sup12',
+            'sup13',
+            'sup14',
+            'sup15',
+            'sup16',
+            'sup17',
+            'sup18'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -87,7 +114,20 @@ class Survey4(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+            'man1',
+            'man2',
+            'man3',
+            'man4',
+            'man5',
+            'man6',
+            'man7',
+            'man8',
+            'man9',
+            'man10',
+            'man11',
+            'man12'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -110,7 +150,18 @@ class Survey5(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+            'trust1',
+            'trust2',
+            'trust3',
+            'trust4',
+            'trust5',
+            'trust6',
+            'trust7',
+            'trust8',
+            'trust9',
+            'trust10'
+        ]
         random.shuffle(fields)
         return fields
 
@@ -127,7 +178,15 @@ class Survey6(Page):
     ]
 
     def get_form_fields(self):
-        fields = self.form_fields
+        fields = [
+            'age',
+            'gender',
+            'nationality',
+            'educational_level',
+            'educational_track',
+            'workexperience',
+            'english'
+        ]
         random.shuffle(fields)
         return fields
 

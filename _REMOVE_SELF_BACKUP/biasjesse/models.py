@@ -156,7 +156,7 @@ class Group(BaseGroup):
 
     def define_pool(self):
         self.total_effort = self.effort_a + self.effort_b
-        self.pool = round(self.total_effort * float(Constants.return_on_effort),2)
+        self.pool = round(self.total_effort * float(C.RETURN_ON_EFFORT),2)
 
     def define_want_info(self):
         self.want_info = self.want_info_form
@@ -183,9 +183,9 @@ class Group(BaseGroup):
         self.allocation_a = 100 - self.allocation_b
         self.bonus_a = round(self.pool * (self.allocation_a / 100), 2)
         self.bonus_b = round(self.pool * (self.allocation_b / 100), 2)
-        self.payoff_a = Constants.e_endowment - c(self.effort_a) + c(self.bonus_a)
-        self.payoff_b = Constants.e_endowment - c(self.effort_b) + c(self.bonus_b)
-        self.payoff_s = Constants.m_endowment - c(self.actualpricepay)
+        self.payoff_a = C.E_ENDOWMENT - c(self.effort_a) + c(self.bonus_a)
+        self.payoff_b = C.E_ENDOWMENT - c(self.effort_b) + c(self.bonus_b)
+        self.payoff_s = C.M_ENDOWMENT - c(self.actualpricepay)
 
         for p in self.get_players():
             if p.player_role == 1:
@@ -220,7 +220,7 @@ class Player(BasePlayer):
 
     def set_final_payoff(self):
         if self.subsession.round_number == 1:
-            self.participant.vars['round_to_pay'] = random.randint(1,Constants.num_rounds)
+            self.participant.vars['round_to_pay'] = random.randint(1,C.NUM_ROUNDS)
 
         if self.subsession.round_number == self.participant.vars['round_to_pay']:
             self.pay_this_round = True

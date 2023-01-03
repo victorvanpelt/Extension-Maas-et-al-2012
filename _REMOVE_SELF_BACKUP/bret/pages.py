@@ -22,13 +22,13 @@ class Instructions(Page):
     # variables for use in template
     def vars_for_template(self):
         return {
-            'num_rows':             Constants.num_rows,
-            'num_cols':             Constants.num_cols,
-            'num_boxes':            Constants.num_rows * Constants.num_cols,
-            'num_nobomb':           Constants.num_rows * Constants.num_cols - 1,
-            'box_value':            Constants.box_value,
-            'time_interval':        Constants.time_interval,
-            'box_value_eur':        Constants.box_value_eur
+            'num_rows':             C.NUM_ROWS,
+            'num_cols':             C.NUM_COLS,
+            'num_boxes':            C.NUM_ROWS * C.NUM_COLS,
+            'num_nobomb':           C.NUM_ROWS * C.NUM_COLS - 1,
+            'box_value':            C.BOX_VALUE,
+            'time_interval':        C.TIME_INTERVAL,
+            'box_value_eur':        C.BOX_VALUE_EUR
         }
 
 
@@ -52,20 +52,20 @@ class Decision(Page):
         if reset == True:
            del self.participant.vars['reset']
 
-        input = not Constants.devils_game if not Constants.dynamic else False
+        input = not C.DEVILS_GAME if not C.DYNAMIC else False
 
         otree_vars = {
             'reset':         reset,
             'input':         input,
-            'random':        Constants.random,
-            'dynamic':       Constants.dynamic,
-            'num_rows':      Constants.num_rows,
-            'num_cols':      Constants.num_cols,
-            'feedback':      Constants.feedback,
-            'undoable':      Constants.undoable,
-            'box_width':     Constants.box_width,
-            'box_height':    Constants.box_height,
-            'time_interval': Constants.time_interval,
+            'random':        C.RANDOM,
+            'dynamic':       C.DYNAMIC,
+            'num_rows':      C.NUM_ROWS,
+            'num_cols':      C.NUM_COLS,
+            'feedback':      C.FEEDBACK,
+            'undoable':      C.UNDOABLE,
+            'box_width':     C.BOX_WIDTH,
+            'box_height':    C.BOX_HEIGHT,
+            'time_interval': C.TIME_INTERVAL,
         }
 
         return {'otree_vars': safe_json(otree_vars)}
@@ -81,7 +81,7 @@ class Results(Page):
 
     # only display results after all rounds have been played
     def is_displayed(self):
-        return self.subsession.round_number == Constants.num_rounds
+        return self.subsession.round_number == C.NUM_ROUNDS
 
     # variables for use in template
     def vars_for_template(self):
@@ -90,8 +90,8 @@ class Results(Page):
 
         return {
             'player_in_all_rounds':   self.player.in_all_rounds(),
-            'box_value':              Constants.box_value,
-            'boxes_total':            Constants.num_rows * Constants.num_cols,
+            'box_value':              C.BOX_VALUE,
+            'boxes_total':            C.NUM_ROWS * C.NUM_COLS,
             'boxes_collected':        self.player.boxes_collected,
             'bomb':                   self.player.bomb,
             'bomb_row':               self.player.bomb_row,
@@ -108,8 +108,8 @@ class Results(Page):
 # ******************************************************************************************************************** #
 page_sequence = [Decision]
 
-if Constants.instructions == True:
+if C.INSTRUCTIONS == True:
     page_sequence.insert(0,Instructions)
 
-if Constants.results == True:
+if C.RESULTS == True:
     page_sequence.append(Results)

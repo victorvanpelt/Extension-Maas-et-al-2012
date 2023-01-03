@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Questionnaire
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-body bg-light instructions" style="text-align:center">
+        First, we would like to ask you some general questions about the interactive part of this study.<br>
+        Please indicate to what extent you agree with the following statements:
+    </div>
+     <table class="table">
+    {% for field in form %}
+        <tr>
+            <td>
+                {{ field.label }}
+            </td>
+            <td align="right">
+                {{ field }}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    <hr>
+    {% next_button %}
+
+{% endblock %}

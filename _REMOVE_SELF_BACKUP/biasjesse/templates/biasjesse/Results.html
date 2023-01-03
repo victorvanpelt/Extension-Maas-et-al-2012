@@ -1,0 +1,209 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Round {{ subsession.round_number }} - Results
+{% endblock %}
+
+{% block content %}
+{% if player.player_role == 1 %}
+    <div class="card card-body bg-light instructions">
+    <b>YOU</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Individual Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
+        <li>Reward: {{ group.payoff_a | floatformat:2 }} Lira</li>
+    </ul>
+    <b>THE OTHER BU MANAGER</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Individual Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
+        <li>Reward: {{ group.payoff_b | floatformat:2 }} Lira</li>
+    </ul>
+    {% if player.extension == 0 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Willingness to pay for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Random number: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% elif player.extension == 1 %}
+    {% if group.want_info == 0 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Wanted information? No</li>
+        <li>Received information? No</li>
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% elif group.want_info == 1 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Wanted information? Yes</li>
+        <li>Willingness to pay for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Random number: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% endif %}
+    {% endif %}
+    </div>
+    <br>
+{% elif player.player_role == 2 %}
+    <div class="card card-body bg-light instructions">
+    <b>YOU</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Individual Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
+        <li>Reward: {{ group.payoff_b | floatformat:2 }} Lira</li>
+    </ul>
+    <b>THE OTHER BU MANAGER</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Individual Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
+        <li>Reward: {{ group.payoff_a | floatformat:2 }} Lira</li>
+    </ul>
+    {% if player.extension == 0 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Willingness to pay for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Random number: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% elif player.extension == 1 %}
+    {% if group.want_info == 0 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Wanted information? No</li>
+        <li>Received information? No</li>
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% elif group.want_info == 1 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Wanted information? Yes</li>
+        <li>Willingness to pay for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Random number: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% endif %}
+    {% endif %}
+    </div>
+    <br>
+{% else %}
+    <div class="card card-body bg-light instructions">
+    {% if player.extension == 0 %}
+    <b>YOU</b>
+    <ul>
+        <li>Willingness to pay for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Random number: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% elif player.extension == 1 %}
+    {% if group.want_info == 0 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Wanted information? No</li>
+        <li>Received information? No</li>
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% elif group.want_info == 1 %}
+    <b>THE SUPERVISOR</b>
+    <ul>
+        <li>Wanted information? Yes</li>
+        <li>Willingness to pay for information: {{ group.pricepay | floatformat:2 }} Lira</li>
+        <li>Random number: {{ group.price_random | floatformat:2 }} Lira</li>
+        {% if group.info == 1 %}
+        <li>Received information? Yes</li>
+        {% else %}
+        <li>Received information? No</li>
+        {% endif %}
+    </ul>
+    <ul>
+        <li>Base amount (+): 15 Lira</li>
+        <li>Price paid for information (-): {{ group.actualpricepay | floatformat:2}} Lira</li>
+        <li>Reward: {{ group.payoff_s | floatformat:2 }} Lira</li>
+    </ul>
+    {% endif %}
+    {% endif %}
+    <b>BU MANAGER A</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Individual Investment (-): {{ group.effort_a | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_a | floatformat:2 }} Lira</li>
+        <li>Reward: {{ group.payoff_a | floatformat:2 }} Lira</li>
+    </ul>
+    <b>BU MANAGER B</b>
+    <ul>
+        <li>Base amount (+): 10 Lira</li>
+        <li>Individual Investment (-): {{ group.effort_b | floatformat:0 }} Lira</li>
+        <li>Allocated bonus (+): {{ group.bonus_b | floatformat:2 }} Lira</li>
+        <li>Reward: {{ group.payoff_b | floatformat:2 }} Lira</li>
+    </ul>
+    </div>
+    <br>
+{% endif %}
+
+    {% next_button %}
+{% endblock %}
+
+

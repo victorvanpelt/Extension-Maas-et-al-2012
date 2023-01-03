@@ -209,11 +209,11 @@ class ShuffleWaitPage(WaitPage):
     wait_for_all_groups = True
 
     def is_displayed(self):
-        return self.subsession.round_number != Constants.num_rounds
+        return self.subsession.round_number != C.NUM_ROUNDS
 
 class FinishPage(Page):
     def is_displayed(self):
-        return self.subsession.round_number == Constants.num_rounds
+        return self.subsession.round_number == C.NUM_ROUNDS
 
     def vars_for_template(self):
         return {

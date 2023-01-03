@@ -3,11 +3,11 @@ from __future__ import division
 
 import random
 
-from otree.common import Currency as cu, currency_range
+from otree.common import Currency as c, currency_range
 
-from . import *
-from otree.api import Bot
-
+from . import pages
+from ._builtin import Bot
+from .models import Constants
 
 
 class PlayerBot(Bot):
@@ -16,10 +16,10 @@ class PlayerBot(Bot):
 
     def play_round(self):
         if C.INSTRUCTIONS and self.player.round_number == 1:
-            yield (Instructions, {'accept_conditions': True})
+            yield (pages.Instructions, {'accept_conditions': True})
         boxes_collected = 50
         yield (
-            Decision,
+            pages.Decision,
            {
                'bomb_row': 1, 'bomb_col': 1, 'boxes_collected': boxes_collected,
                'bomb': 1 if self.case == 'always_bomb' else 0
@@ -30,4 +30,4 @@ class PlayerBot(Bot):
         if C.RESULTS and self.player.round_number == C.NUM_ROUNDS:
             # 1 round is chosen randomly
             assert self.participant.vars['bret_payoff'] == expected_round_result
-            yield Results
+            yield pages.Results

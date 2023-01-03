@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions (Page 1 of 4)
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            This study consists of two parts, an interactive part and a non-interactive part, which do not influence each other.
+        </li>
+        <li>
+            We will start with the interactive part, which consists of 8 rounds. Every round has the same sequence of events.
+        </li>
+        <li>
+            At the start of every round, the computer will match you to two randomly chosen participants in this session.
+        </li>
+        <li>
+            Two of you will act as ‘business unit manager’ (hereafter BU manager), and one of you will act as ‘Supervisor’. The computer also randomly determines whether you will act as BU manager or Supervisor.
+        </li>
+        <li>
+            Some, but not all, participants will change roles (from BU manager to Supervisor or vice versa) after round 4. This process is randomly determined by the computer.
+        </li>
+        <li>
+            At the end of the experiment, the computer will select one of the 8 rounds at random to determine your compensation in Lira for the interactive part.
+        </li>
+    </ul>
+</div>
+<br>
+{% formfield player.accept_1 label="I am finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}

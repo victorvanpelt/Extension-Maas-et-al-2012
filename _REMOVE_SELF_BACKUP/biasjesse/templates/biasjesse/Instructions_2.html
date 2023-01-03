@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Instructions (Page 2 of 4)
+{% endblock %}
+
+{% block content %}
+<div class="card card-body bg-light instructions">
+    <ul>
+        <li>
+            At the start of each round, each of the two BU managers receives 10 Lira.
+        </li>
+        <li>
+            Next, both BU managers independently decide how much of it to invest in a collaborative project with the other BU manager.
+        </li>
+        <li>
+            Both BU managers keep the Lira that they do not choose to invest.
+        </li>
+        <li>
+            The sum of the BU managers' individual investments (the total investment) is multiplied by 1.5 to determine the bonus pool for the BU managers.
+        </li>
+        <li>
+            The Supervisor decides how to divide the bonus pool between the two BU managers. The Supervisor can choose any possible division in percentages of the bonus pool.
+        </li>
+        <li>
+            The reward of a BU manager at the end of a round equals the uninvested amount of Lira plus the share of the bonus pool allocated to the BU manager by the Supervisor:
+        </li>
+    </ul>
+        <p align="center">10 – Individual Investment + amount allocated from bonus pool</p>
+</div>
+<br>
+{% formfield player.accept_2 label="I am finished and would like to continue." %}
+<br>
+{% next_button %}
+{% endblock %}
